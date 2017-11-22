@@ -1,0 +1,19 @@
+{
+  "name": "@podium/utils",
+  "files": ["lib"],
+  "version": "0.0.0",
+  "dependencies": {
+    "find-babel-config": "^1.1.0",
+    "pkg-conf": "^2.0.0",
+    "pkg-up": "^2.0.0"
+  },
+  "peerDependencies": {},
+  "publishConfig": {
+    "registry": "http://npm.finntech.no/"
+  },
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {}
+}
