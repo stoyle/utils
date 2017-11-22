@@ -1,7 +1,7 @@
 {
   "name": "@podium/utils",
   "files": ["lib"],
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "find-babel-config": "^1.1.0",
     "pkg-conf": "^2.0.0",
@@ -16,6 +16,5 @@
   },
   "peerDependencies": {
     "@finn-no/fiaas-logger": "^1.4.2"
-  },
-  "devDependencies": {}
+  }
 }
