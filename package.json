@@ -1,20 +1,49 @@
 {
   "name": "@podium/utils",
-  "files": ["lib"],
-  "version": "0.0.1",
+  "version": "2.0.0-beta.1",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git@github.schibsted.io:Podium/utils.git"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "./lib/index.js",
+  "publishConfig": {
+    "registry": "http://npm.finntech.no/"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "test": "jest",
+    "test:verbose": "jest --verbose",
+    "test:coverage": "jest --coverage"
+  },
   "dependencies": {
     "find-babel-config": "^1.1.0",
     "pkg-conf": "^2.0.0",
     "pkg-up": "^2.0.0"
   },
-  "publishConfig": {
-    "registry": "http://npm.finntech.no/"
+  "devDependencies": {
+    "jest": "^22.1.4",
+    "eslint": "^4.17.0",
+    "eslint-config-finn": "^3.0.0",
+    "eslint-config-finn-prettier": "^3.0.1",
+    "prettier": "^1.10.2"
   },
-  "main": "./lib/index.js",
-  "scripts": {
-    "test": "jest"
-  },
-  "peerDependencies": {
-    "@finn-no/fiaas-logger": "^1.4.2"
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "testEnvironment": "node"
   }
 }
