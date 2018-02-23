@@ -112,3 +112,108 @@ test('.uriRelativeToAbsolute() - no arguments - should throw', () => {
         utils.uriRelativeToAbsolute();
     }).toThrowError(/Invalid URL/);
 });
+
+/**
+ * .setAtLocalsPodium()
+ */
+
+test('.setAtLocalsPodium() - no arguments - should return res.locals.podium', () => {
+    expect(utils.setAtLocalsPodium()).toEqual({
+        locals: {
+            podium: {},
+        },
+    });
+});
+
+test('.setAtLocalsPodium() - response argument is an empty object - should return res.locals.podium', () => {
+    expect(utils.setAtLocalsPodium({})).toEqual({
+        locals: {
+            podium: {},
+        },
+    });
+});
+
+test('.setAtLocalsPodium() - response argument has .locals - should return res.locals.podium', () => {
+    expect(
+        utils.setAtLocalsPodium({
+            locals: {},
+        })
+    ).toEqual({
+        locals: {
+            podium: {},
+        },
+    });
+});
+
+test('.setAtLocalsPodium() - response argument has .locals.podium - should return res.locals.podium', () => {
+    expect(
+        utils.setAtLocalsPodium({
+            locals: {
+                podium: {},
+            },
+        })
+    ).toEqual({
+        locals: {
+            podium: {},
+        },
+    });
+});
+
+test('.setAtLocalsPodium() - property argument has value - should set property', () => {
+    expect(utils.setAtLocalsPodium({}, 'foo')).toEqual({
+        locals: {
+            podium: {
+                foo: undefined,
+            },
+        },
+    });
+});
+
+test('.setAtLocalsPodium() - property argument is empty string - should not set property', () => {
+    expect(utils.setAtLocalsPodium({}, '')).toEqual({
+        locals: {
+            podium: {},
+        },
+    });
+});
+
+test('.setAtLocalsPodium() - property argument is not string - should not set property', () => {
+    expect(utils.setAtLocalsPodium({}, [])).toEqual({
+        locals: {
+            podium: {},
+        },
+    });
+});
+
+test('.setAtLocalsPodium() - value argument has value - should set value on property', () => {
+    expect(utils.setAtLocalsPodium({}, 'foo', 'bar')).toEqual({
+        locals: {
+            podium: {
+                foo: 'bar',
+            },
+        },
+    });
+});
+
+test('.setAtLocalsPodium() - .locals.podium already have properties - should append new property and value', () => {
+    expect(
+        utils.setAtLocalsPodium(
+            {
+                locals: {
+                    podium: {
+                        xyz: 'zyx',
+                    },
+                },
+            },
+            'foo',
+            'bar'
+        )
+    ).toEqual({
+        locals: {
+            podium: {
+                xyz: 'zyx',
+                foo: 'bar',
+            },
+        },
+    });
+});
