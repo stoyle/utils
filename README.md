@@ -12,6 +12,26 @@ $ npm install @podium/utils
 
 This module has the following API:
 
+### .isString(str)
+
+Checks if a value is a string.
+
+The method takes the following arguments:
+
+ * str - `*` - A value to check. Required.
+
+Returns a boolean.
+
+### .isFunction(fn)
+
+Checks if a value is a function.
+
+The method takes the following arguments:
+
+ * fn - `*` - A value to check. Required.
+
+Returns a boolean.
+
 ### .uriBuilder(input, base, extra)
 
 Constructs an absolute URI out of a absolute manifest URI and a relative URI.
@@ -70,4 +90,92 @@ const content = 'http://foo.site.com/here/is/content.html';
 
 const url = utils.uriRelativeToAbsolute(content, manifest);
 console.log(url) // outputs: http://foo.site.com/here/is/content.html
+```
+
+### .setAtLocalsPodium(response, property, value)
+
+Set a value on a property on .locals.podium on a http response object.
+Ensures that .locals.podium exists on the http response object.
+
+If property is not provided, .locals.podium will be created, if not already
+existing, on the response object.
+
+The method takes the following arguments:
+
+ * response - `Object` - A http response object.
+ * property - `String` - Property for the value.
+ * value - `String` - Value to store on the property.
+
+The http response object.
+
+```js
+const obj = utils.setAtLocalsPodium({}, 'foo', 'bar')
+
+/*
+obj is now:
+{
+    locals: {
+        podium: {
+            foo: 'bar',
+        },
+    },
+}
+*/
+```
+
+
+### .serializeContext(headers, context, arg)
+
+Serialize a context object into a http header object.
+
+The method takes the following arguments:
+
+ * headers - `Object` - A http headers object the context will be copied into.
+ * context - `Object` - A contect object to copy from
+ * arg - `*` - An argument value passed on to the function if a context value is a function.
+
+A http header object.
+
+```js
+const context = {
+    'podium-foo': 'bar',
+    'podium-bar': 'foo',
+};
+
+let headers = {
+    test: 'xyz',
+};
+
+headers = utils.serializeContext(headers, context);
+
+/*
+headers is now:
+{
+    'podium-foo': 'bar',
+    'podium-bar': 'foo',
+    test: 'xyz',
+}
+*/
+```
+
+
+### .deserializeContext(headers, prefix)
+
+Deserialize a context object from a http header object
+
+The method takes the following arguments:
+
+ * headers - `Object` - A http headers object the context will be extracted from.
+ * prefix - `String` - The prefix used to mark what properties are context properties
+
+A object containing context properties and values
+
+```js
+const headers = {
+    bar: 'foo',
+    'podium-foo': 'bar podium',
+};
+
+const context = utils.deserializeContext(headers);
+// context is: { foo: 'bar podium' }
 ```
