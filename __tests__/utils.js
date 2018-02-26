@@ -3,6 +3,104 @@
 const utils = require('../lib/utils');
 
 /**
+ * .isString()
+ */
+
+test('.isString() - no arguments given - should return false', () => {
+    const result = utils.isString();
+    expect(result).toEqual(false);
+});
+
+test('.isString() - arguments is an object - should return false', () => {
+    const result = utils.isString({});
+    expect(result).toEqual(false);
+});
+
+test('.isString() - arguments is an string - should return true', () => {
+    const result = utils.isString('function');
+    expect(result).toEqual(true);
+});
+
+test('.isString() - arguments is an array - should return false', () => {
+    const result = utils.isString([]);
+    expect(result).toEqual(false);
+});
+
+test('.isString() - arguments is an boolean - should return false', () => {
+    const result = utils.isString(true);
+    expect(result).toEqual(false);
+});
+
+test('.isString() - arguments is an number - should return false', () => {
+    const result = utils.isString(42);
+    expect(result).toEqual(false);
+});
+
+test('.isString() - arguments is an function - should return false', () => {
+    const result = utils.isString(() => {});
+    expect(result).toEqual(false);
+});
+
+test('.isString() - arguments is an arrow function - should return false', () => {
+    const result = utils.isString(() => {});
+    expect(result).toEqual(false);
+});
+
+test('.isString() - arguments is an async function - should return false', () => {
+    const result = utils.isString(async () => {});
+    expect(result).toEqual(false);
+});
+
+/**
+ * .isFunction()
+ */
+
+test('.isFunction() - no arguments given - should return false', () => {
+    const result = utils.isFunction();
+    expect(result).toEqual(false);
+});
+
+test('.isFunction() - arguments is an object - should return false', () => {
+    const result = utils.isFunction({});
+    expect(result).toEqual(false);
+});
+
+test('.isFunction() - arguments is an string - should return false', () => {
+    const result = utils.isFunction('function');
+    expect(result).toEqual(false);
+});
+
+test('.isFunction() - arguments is an array - should return false', () => {
+    const result = utils.isFunction([]);
+    expect(result).toEqual(false);
+});
+
+test('.isFunction() - arguments is an boolean - should return false', () => {
+    const result = utils.isFunction(true);
+    expect(result).toEqual(false);
+});
+
+test('.isFunction() - arguments is an number - should return false', () => {
+    const result = utils.isFunction(42);
+    expect(result).toEqual(false);
+});
+
+test('.isFunction() - arguments is an function - should return true', () => {
+    const result = utils.isFunction(() => {});
+    expect(result).toEqual(true);
+});
+
+test('.isFunction() - arguments is an arrow function - should return true', () => {
+    const result = utils.isFunction(() => {});
+    expect(result).toEqual(true);
+});
+
+test('.isFunction() - arguments is an async function - should return true', () => {
+    const result = utils.isFunction(async () => {});
+    expect(result).toEqual(true);
+});
+
+/**
  * .uriBuilder()
  */
 
@@ -218,7 +316,6 @@ test('.setAtLocalsPodium() - .locals.podium already have properties - should app
     });
 });
 
-
 /**
  * .serializeContext()
  */
@@ -263,7 +360,6 @@ test('.serializeContext() - one key on the context is a function - should call t
         test: 'xyz',
     });
 });
-
 
 /**
  * .deserializeContext()
