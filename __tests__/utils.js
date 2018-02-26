@@ -217,3 +217,80 @@ test('.setAtLocalsPodium() - .locals.podium already have properties - should app
         },
     });
 });
+
+
+/**
+ * .serializeContext()
+ */
+
+test('.serializeContext() - no arguments given - should return empty object', () => {
+    const result = utils.serializeContext();
+    expect(result).toEqual({});
+});
+
+test('.serializeContext() - headers and context is given - should copy context into headers', () => {
+    const context = {
+        'podium-foo': 'bar',
+        'podium-bar': 'foo',
+    };
+
+    const headers = {
+        test: 'xyz',
+    };
+
+    const result = utils.serializeContext(headers, context);
+    expect(result).toEqual({
+        'podium-foo': 'bar',
+        'podium-bar': 'foo',
+        test: 'xyz',
+    });
+});
+
+test('.serializeContext() - one key on the context is a function - should call the function and set value on headers', () => {
+    const context = {
+        'podium-foo': 'bar',
+        'podium-bar': name => `${name}-test`,
+    };
+
+    const headers = {
+        test: 'xyz',
+    };
+
+    const result = utils.serializeContext(headers, context, 'foo');
+    expect(result).toEqual({
+        'podium-foo': 'bar',
+        'podium-bar': 'foo-test',
+        test: 'xyz',
+    });
+});
+
+
+/**
+ * .deserializeContext()
+ */
+
+test('.deserializeContext() - no arguments given - should return empty object', () => {
+    const result = utils.deserializeContext();
+    expect(result).toEqual({});
+});
+
+test('.deserializeContext() - headers argument with context is given - should return object with podium prefixed properties', () => {
+    const headers = {
+        bar: 'foo',
+        'podium-foo': 'bar podium',
+    };
+
+    const result = utils.deserializeContext(headers);
+    expect(result).toEqual({ foo: 'bar podium' });
+});
+
+test('.deserializeContext() - prefix argument with alternate value is given - should return object with only given prefixed properties', () => {
+    const headers = {
+        bar: 'foo',
+        'podium-foo': 'bar podium',
+        'helium-foo': 'foo helium',
+    };
+
+    const result = utils.deserializeContext(headers, 'helium');
+    expect(result).toEqual({ foo: 'foo helium' });
+});
