@@ -317,6 +317,101 @@ test('.setAtLocalsPodium() - .locals.podium already have properties - should app
 });
 
 /**
+ * .getFromLocalsPodium()
+ */
+
+test('.getFromLocalsPodium() - no arguments - should return null', () => {
+    expect(utils.getFromLocalsPodium()).toBeNull();
+});
+
+test('.getFromLocalsPodium() - response argument is an empty object - should return null', () => {
+    expect(utils.getFromLocalsPodium({})).toBeNull();
+});
+
+test('.getFromLocalsPodium() - response argument has .locals - should return null', () => {
+    expect(
+        utils.getFromLocalsPodium({
+            locals: {},
+        })
+    ).toBeNull();
+});
+
+test('.getFromLocalsPodium() - response argument has .locals.podium - should return null', () => {
+    expect(
+        utils.getFromLocalsPodium({
+            locals: {
+                podium: {},
+            },
+        })
+    ).toBeNull();
+});
+
+test('.getFromLocalsPodium() - property argument has value - should get property', () => {
+    expect(
+        utils.getFromLocalsPodium(
+            {
+                locals: {
+                    podium: {
+                        foo: undefined,
+                    },
+                },
+            },
+            'foo'
+        )
+    ).toBeUndefined();
+});
+
+test('.getFromLocalsPodium() - property argument is empty string - should not get property', () => {
+    expect(utils.getFromLocalsPodium({}, '')).toBeNull();
+});
+
+test('.getFromLocalsPodium() - property argument is not string - should not get property', () => {
+    expect(utils.getFromLocalsPodium({}, [])).toBeNull();
+});
+
+test('.getFromLocalsPodium() - value argument has value - should set value on property', () => {
+    expect(
+        utils.getFromLocalsPodium(
+            {
+                locals: {
+                    podium: {
+                        foo: 'bar',
+                    },
+                },
+            },
+            'foo'
+        )
+    ).toEqual('bar');
+});
+
+/**
+ * .duplicateOnLocalsPodium()
+ */
+
+test('.duplicateOnLocalsPodium() - property argument has value - should set property', () => {
+    expect(
+        utils.duplicateOnLocalsPodium(
+            {
+                locals: {
+                    podium: {
+                        foo: 'foobar',
+                    },
+                },
+            },
+            'foo',
+            'bar'
+        )
+    ).toEqual({
+        locals: {
+            podium: {
+                foo: 'foobar',
+                bar: 'foobar',
+            },
+        },
+    });
+});
+
+/**
  * .serializeContext()
  */
 

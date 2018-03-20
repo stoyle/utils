@@ -123,6 +123,26 @@ obj is now:
 */
 ```
 
+### .getFromLocalsPodium(response, property)
+
+Get the value from a property on .locals.podium on a http response object
+Ensures that .locals.podium exists on the http response object.
+
+* response - `Object` - A http response object
+* property - `String` - Property for the value
+
+returns The property, or `null` if it does not exist
+
+### .duplicateOnLocalsPodium(response, fromProperty, toProperty)
+
+Get the value from a property on .locals.podium on a http response object
+and sets its value on another key.
+
+* response - `Object` - A http response object
+* fromProperty - `String` - Property for the existent value
+* toProperty - `String` - Property for the duplicated value
+
+@returns {Object} The http response object
 
 ### .serializeContext(headers, context, arg)
 
