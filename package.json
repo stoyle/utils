@@ -40,5 +40,8 @@
       }
     },
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "camelcase": "^5.0.0"
   }
 }
