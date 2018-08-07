@@ -413,15 +413,13 @@ test('.duplicateOnLocalsPodium() - property arguments has value - should set pro
 
 test('.duplicateOnLocalsPodium() - property arguments has no value - should leave response object untouched', () => {
     expect(
-        utils.duplicateOnLocalsPodium(
-            {
-                locals: {
-                    podium: {
-                        foo: 'foobar',
-                    },
+        utils.duplicateOnLocalsPodium({
+            locals: {
+                podium: {
+                    foo: 'foobar',
                 },
             },
-        )
+        })
     ).toEqual({
         locals: {
             podium: {
@@ -432,13 +430,9 @@ test('.duplicateOnLocalsPodium() - property arguments has no value - should leav
 });
 
 test('.duplicateOnLocalsPodium() - no arguments is given - should return an object with .locals.podium property', () => {
-    expect(
-        utils.duplicateOnLocalsPodium()
-    ).toEqual({
+    expect(utils.duplicateOnLocalsPodium()).toEqual({
         locals: {
-            podium: {
-
-            },
+            podium: {},
         },
     });
 });
