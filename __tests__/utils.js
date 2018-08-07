@@ -388,7 +388,7 @@ test('.getFromLocalsPodium() - value argument has value - should set value on pr
  * .duplicateOnLocalsPodium()
  */
 
-test('.duplicateOnLocalsPodium() - property argument has value - should set property', () => {
+test('.duplicateOnLocalsPodium() - property arguments has value - should set property on response object', () => {
     expect(
         utils.duplicateOnLocalsPodium(
             {
@@ -406,6 +406,38 @@ test('.duplicateOnLocalsPodium() - property argument has value - should set prop
             podium: {
                 foo: 'foobar',
                 bar: 'foobar',
+            },
+        },
+    });
+});
+
+test('.duplicateOnLocalsPodium() - property arguments has no value - should leave response object untouched', () => {
+    expect(
+        utils.duplicateOnLocalsPodium(
+            {
+                locals: {
+                    podium: {
+                        foo: 'foobar',
+                    },
+                },
+            },
+        )
+    ).toEqual({
+        locals: {
+            podium: {
+                foo: 'foobar',
+            },
+        },
+    });
+});
+
+test('.duplicateOnLocalsPodium() - no arguments is given - should return an object with .locals.podium property', () => {
+    expect(
+        utils.duplicateOnLocalsPodium()
+    ).toEqual({
+        locals: {
+            podium: {
+
             },
         },
     });
