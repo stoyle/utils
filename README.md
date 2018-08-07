@@ -1,5 +1,7 @@
 # Podium Utils
 
+[![Build Status](https://travis.schibsted.io/Podium/utils.svg?token=9zzG3RHGpsXkFZyESkVu)](https://travis.schibsted.io/Podium/utils)
+
 Misc common / generic utility methods.
 
 ## Installation
