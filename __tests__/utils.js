@@ -101,6 +101,65 @@ test('.isFunction() - arguments is an async function - should return true', () =
 });
 
 /**
+ * .pathnameBuilder()
+ */
+
+test('.pathnameBuilder() - no arguments - should return empty String', () => {
+    const result = utils.pathnameBuilder();
+    expect(result).toBe('');
+});
+
+test('.pathnameBuilder() - single argument with "/" - should return empty String', () => {
+    const result = utils.pathnameBuilder('/');
+    expect(result).toBe('');
+});
+
+test('.pathnameBuilder() - single argument with double "/" - should return empty String', () => {
+    const result = utils.pathnameBuilder('//');
+    expect(result).toBe('');
+});
+
+test('.pathnameBuilder() - single argument with no "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('a');
+    expect(result).toBe('/a');
+});
+
+test('.pathnameBuilder() - single argument sarting with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('/a');
+    expect(result).toBe('/a');
+});
+
+test('.pathnameBuilder() - single argument ending with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('a/');
+    expect(result).toBe('/a');
+});
+
+test('.pathnameBuilder() - single argument starting and ending with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('/a/');
+    expect(result).toBe('/a');
+});
+
+test('.pathnameBuilder() - multiple argument all starting and ending with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('/a/b/', '/c/d/', '/e/f/');
+    expect(result).toBe('/a/b/c/d/e/f');
+});
+
+test('.pathnameBuilder() - multiple argument one without "/" at end and one without "/" at the beginning - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('/a/b/', '/c/d', 'e/f/');
+    expect(result).toBe('/a/b/c/d/e/f');
+});
+
+test('.pathnameBuilder() - multiple argument where the last ends with a "file extension" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('/a/b/', '/c/d', 'e/f.json');
+    expect(result).toBe('/a/b/c/d/e/f.json');
+});
+
+test('.pathnameBuilder() - one argument is an Array of Strings - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('/a/b/', ['c', 'd'], 'e/f/');
+    expect(result).toBe('/a/b/c/d/e/f');
+});
+
+/**
  * .uriBuilder()
  */
 
