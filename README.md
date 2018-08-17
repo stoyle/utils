@@ -34,6 +34,21 @@ The method takes the following arguments:
 
 Returns a boolean.
 
+### .pathnameBuilder(pathname... [])
+
+Constructs an pathname from all arguments. Returned pathname will begin with
+a `/` and end without one.
+
+```js
+const utils = require('@podium/utils');
+const foo = 'foo/a/';
+const bar = '/bar/b/';
+const xyz = '/xyz/';
+
+const pathname = utils.pathnameBuilder(foo, bar, xyz);
+console.log(pathname) // outputs: /foo/a/bar/b/xyz
+```
+
 ### .uriBuilder(input, base, extra)
 
 Constructs an absolute URI out of a absolute manifest URI and a relative URI.
