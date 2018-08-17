@@ -109,14 +109,19 @@ test('.pathnameBuilder() - no arguments - should return empty String', () => {
     expect(result).toBe('');
 });
 
-test('.pathnameBuilder() - single argument with "/" - should return empty String', () => {
+test('.pathnameBuilder() - single argument with "/" - should return single "/"', () => {
     const result = utils.pathnameBuilder('/');
-    expect(result).toBe('');
+    expect(result).toBe('/');
 });
 
-test('.pathnameBuilder() - single argument with double "/" - should return empty String', () => {
+test('.pathnameBuilder() - single argument with double "/" - should return single "/"', () => {
     const result = utils.pathnameBuilder('//');
-    expect(result).toBe('');
+    expect(result).toBe('/');
+});
+
+test('.pathnameBuilder() - multiple arguments with double "/" - should return single "/"', () => {
+    const result = utils.pathnameBuilder('//', '//', '//');
+    expect(result).toBe('/');
 });
 
 test('.pathnameBuilder() - single argument with no "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
@@ -139,17 +144,17 @@ test('.pathnameBuilder() - single argument starting and ending with "/" - should
     expect(result).toBe('/a');
 });
 
-test('.pathnameBuilder() - multiple argument all starting and ending with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+test('.pathnameBuilder() - multiple arguments all starting and ending with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
     const result = utils.pathnameBuilder('/a/b/', '/c/d/', '/e/f/');
     expect(result).toBe('/a/b/c/d/e/f');
 });
 
-test('.pathnameBuilder() - multiple argument one without "/" at end and one without "/" at the beginning - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+test('.pathnameBuilder() - multiple arguments one without "/" at end and one without "/" at the beginning - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
     const result = utils.pathnameBuilder('/a/b/', '/c/d', 'e/f/');
     expect(result).toBe('/a/b/c/d/e/f');
 });
 
-test('.pathnameBuilder() - multiple argument where the last ends with a "file extension" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+test('.pathnameBuilder() - multiple arguments where the last ends with a "file extension" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
     const result = utils.pathnameBuilder('/a/b/', '/c/d', 'e/f.json');
     expect(result).toBe('/a/b/c/d/e/f.json');
 });
