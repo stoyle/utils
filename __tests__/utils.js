@@ -164,6 +164,16 @@ test('.pathnameBuilder() - one argument is an Array of Strings - should start pa
     expect(result).toBe('/a/b/c/d/e/f');
 });
 
+test('.pathnameBuilder() - one argument is "undefined" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('/a/b/', undefined, '/c/d/');
+    expect(result).toBe('/a/b/c/d');
+});
+
+test('.pathnameBuilder() - one argument is not a String or Array - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('/a/b/', {}, '/c/d/');
+    expect(result).toBe('/a/b/c/d');
+});
+
 /**
  * .uriBuilder()
  */
