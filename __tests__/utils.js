@@ -124,19 +124,19 @@ test('.pathnameBuilder() - multiple arguments with double "/" - should return si
     expect(result).toBe('/');
 });
 
-test('.pathnameBuilder() - single argument with no "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+test('.pathnameBuilder() - single argument with no "/" - should start pathname without "/", separate each entry with single "/" and end with no "/"', () => {
     const result = utils.pathnameBuilder('a');
-    expect(result).toBe('/a');
+    expect(result).toBe('a');
 });
 
-test('.pathnameBuilder() - single argument sarting with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+test('.pathnameBuilder() - single argument staring with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
     const result = utils.pathnameBuilder('/a');
     expect(result).toBe('/a');
 });
 
-test('.pathnameBuilder() - single argument ending with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+test('.pathnameBuilder() - single argument ending with "/" - should start pathname without "/", separate each entry with single "/" and end with no "/"', () => {
     const result = utils.pathnameBuilder('a/');
-    expect(result).toBe('/a');
+    expect(result).toBe('a');
 });
 
 test('.pathnameBuilder() - single argument starting and ending with "/" - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
@@ -172,6 +172,16 @@ test('.pathnameBuilder() - one argument is "undefined" - should start pathname w
 test('.pathnameBuilder() - one argument is not a String or Array - should start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
     const result = utils.pathnameBuilder('/a/b/', {}, '/c/d/');
     expect(result).toBe('/a/b/c/d');
+});
+
+test('.pathnameBuilder() - emtpy arguments at the beginning, first String starts with "/" - should ignore empty arguments start pathname with "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('', '', '/a/b/', '');
+    expect(result).toBe('/a/b');
+});
+
+test('.pathnameBuilder() - emtpy arguments at the beginning, first String starts without "/" - should ignore empty arguments start pathname without "/", separate each entry with single "/" and end with no "/"', () => {
+    const result = utils.pathnameBuilder('', '', 'a/b/', '');
+    expect(result).toBe('a/b');
 });
 
 /**

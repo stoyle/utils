@@ -36,8 +36,8 @@ Returns a boolean.
 
 ### .pathnameBuilder(pathname... [])
 
-Constructs an pathname from all arguments. Returned pathname will begin with
-a `/` and end without one.
+Constructs an pathname from all arguments. Returned pathname will always end without
+a `/` and if the first argument starts with a `/` it will be preserved.
 
 ```js
 const utils = require('@podium/utils');
@@ -46,7 +46,7 @@ const bar = '/bar/b/';
 const xyz = '/xyz/';
 
 const pathname = utils.pathnameBuilder(foo, bar, xyz);
-console.log(pathname) // outputs: /foo/a/bar/b/xyz
+console.log(pathname) // outputs: foo/a/bar/b/xyz
 ```
 
 ### .uriBuilder(input, base, extra)
