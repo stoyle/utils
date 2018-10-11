@@ -1,47 +1,47 @@
 {
-  "name": "@podium/utils",
-  "version": "2.1.0",
-  "license": "SEE LICENSE IN LICENSE",
-  "repository": {
-    "type": "git",
-    "url": "git@github.schibsted.io:Podium/utils.git"
-  },
-  "files": [
-    "lib"
-  ],
-  "main": "./lib/utils.js",
-  "publishConfig": {
-    "registry": "http://npm.finntech.no/"
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "test": "jest",
-    "test:verbose": "jest --verbose",
-    "test:coverage": "jest --coverage"
-  },
-  "devDependencies": {
-    "jest": "^23.6.0",
-    "eslint": "^5.5.0",
-    "eslint-config-finn": "^3.0.1",
-    "eslint-config-finn-prettier": "^3.0.2",
-    "prettier": "^1.14.2"
-  },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "test/"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
+    "name": "@podium/utils",
+    "version": "2.1.0",
+    "license": "SEE LICENSE IN LICENSE",
+    "repository": {
+        "type": "git",
+        "url": "git@github.schibsted.io:Podium/utils.git"
     },
-    "testEnvironment": "node"
-  },
-  "dependencies": {
-    "camelcase": "^5.0.0"
-  }
+    "files": [
+        "lib"
+    ],
+    "main": "./lib/utils.js",
+    "publishConfig": {
+        "registry": "http://npm.finntech.no/"
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "test": "jest",
+        "test:verbose": "jest --verbose",
+        "test:coverage": "jest --coverage"
+    },
+    "devDependencies": {
+        "eslint": "^5.6.1",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-plugin-import": "^2.14.0",
+        "jest": "^23.6.0",
+        "prettier": "^1.14.2"
+    },
+    "jest": {
+        "coveragePathIgnorePatterns": [
+            "test/"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "branches": 100,
+                "functions": 100,
+                "lines": 100,
+                "statements": 100
+            }
+        },
+        "testEnvironment": "node"
+    },
+    "dependencies": {
+        "camelcase": "^5.0.0"
+    }
 }
