@@ -203,7 +203,7 @@ test('.uriBuilder() - "base is empty" - should throw', () => {
 test('.uriBuilder() - "base" has long path with <filename>.json - should replace <filename>.json file with "input"', () => {
     const result = utils.uriBuilder(
         '/podlet.html',
-        'http://localhost:7000/podlet/a/manifest.json'
+        'http://localhost:7000/podlet/a/manifest.json',
     );
     expect(result).toBe('http://localhost:7000/podlet/a/podlet.html');
 });
@@ -211,7 +211,7 @@ test('.uriBuilder() - "base" has long path with <filename>.json - should replace
 test('.uriBuilder() - "base" has short path with <filename>.json - should replace <filename>.json file with "input"', () => {
     const result = utils.uriBuilder(
         '/podlet.html',
-        'http://localhost:7000/manifest.json'
+        'http://localhost:7000/manifest.json',
     );
     expect(result).toBe('http://localhost:7000/podlet.html');
 });
@@ -219,7 +219,7 @@ test('.uriBuilder() - "base" has short path with <filename>.json - should replac
 test('.uriBuilder() - "base" has long path without <filename>.json - should append "input" to "base"', () => {
     const result = utils.uriBuilder(
         '/podlet.html',
-        'http://localhost:7000/podlet/a/'
+        'http://localhost:7000/podlet/a/',
     );
     expect(result).toBe('http://localhost:7000/podlet/a/podlet.html');
 });
@@ -232,7 +232,7 @@ test('.uriBuilder() - "base" has short path without <filename>.json - should app
 test('.uriBuilder() - "input" does not begin with "/" - should replace <filename>.json file with "input"', () => {
     const result = utils.uriBuilder(
         'podlet.html',
-        'http://localhost:7000/podlet/a/manifest.json'
+        'http://localhost:7000/podlet/a/manifest.json',
     );
     expect(result).toBe('http://localhost:7000/podlet/a/podlet.html');
 });
@@ -246,7 +246,7 @@ test('.uriBuilder() - "extra" is provided - should append "extra"', () => {
     const result = utils.uriBuilder(
         '/podlet',
         'http://localhost:7000/foo/',
-        '/a/b'
+        '/a/b',
     );
     expect(result).toBe('http://localhost:7000/foo/podlet/a/b');
 });
@@ -261,7 +261,7 @@ test('.uriIsRelative() - "uri" is relative - should return "true"', () => {
 
 test('.uriIsRelative() - "uri" is absolute - should return "false"', () => {
     expect(utils.uriIsRelative('http://localhost:7000/manifest.json')).toBe(
-        false
+        false,
     );
 });
 
@@ -273,7 +273,7 @@ test('.uriRelativeToAbsolute() - "input" is relative - should build absolute URI
     const result = utils.uriRelativeToAbsolute(
         '/podlet',
         'http://localhost:7000/foo/',
-        '/a/b'
+        '/a/b',
     );
     expect(result).toBe('http://localhost:7000/foo/podlet/a/b');
 });
@@ -282,7 +282,7 @@ test('.uriRelativeToAbsolute() - "input" is absolute - should return absolute UR
     const result = utils.uriRelativeToAbsolute(
         'http://localhost:7000/foo/podlet/a/b',
         'http://localhost:7000/bar/',
-        '/b/a'
+        '/b/a',
     );
     expect(result).toBe('http://localhost:7000/foo/podlet/a/b');
 });
@@ -319,7 +319,7 @@ test('.setAtLocalsPodium() - response argument has .locals - should return res.l
     expect(
         utils.setAtLocalsPodium({
             locals: {},
-        })
+        }),
     ).toEqual({
         locals: {
             podium: {},
@@ -333,7 +333,7 @@ test('.setAtLocalsPodium() - response argument has .locals.podium - should retur
             locals: {
                 podium: {},
             },
-        })
+        }),
     ).toEqual({
         locals: {
             podium: {},
@@ -388,8 +388,8 @@ test('.setAtLocalsPodium() - .locals.podium already have properties - should app
                 },
             },
             'foo',
-            'bar'
-        )
+            'bar',
+        ),
     ).toEqual({
         locals: {
             podium: {
@@ -416,7 +416,7 @@ test('.getFromLocalsPodium() - response argument has .locals - should return nul
     expect(
         utils.getFromLocalsPodium({
             locals: {},
-        })
+        }),
     ).toBeNull();
 });
 
@@ -426,7 +426,7 @@ test('.getFromLocalsPodium() - response argument has .locals.podium - should ret
             locals: {
                 podium: {},
             },
-        })
+        }),
     ).toBeNull();
 });
 
@@ -440,8 +440,8 @@ test('.getFromLocalsPodium() - property argument has value - should get property
                     },
                 },
             },
-            'foo'
-        )
+            'foo',
+        ),
     ).toBeUndefined();
 });
 
@@ -463,8 +463,8 @@ test('.getFromLocalsPodium() - value argument has value - should set value on pr
                     },
                 },
             },
-            'foo'
-        )
+            'foo',
+        ),
     ).toEqual('bar');
 });
 
@@ -483,8 +483,8 @@ test('.duplicateOnLocalsPodium() - property arguments has value - should set pro
                 },
             },
             'foo',
-            'bar'
-        )
+            'bar',
+        ),
     ).toEqual({
         locals: {
             podium: {
@@ -503,7 +503,7 @@ test('.duplicateOnLocalsPodium() - property arguments has no value - should leav
                     foo: 'foobar',
                 },
             },
-        })
+        }),
     ).toEqual({
         locals: {
             podium: {

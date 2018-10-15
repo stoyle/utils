@@ -20,7 +20,7 @@ Checks if a value is a string.
 
 The method takes the following arguments:
 
- * str - `*` - A value to check. Required.
+-   str - `*` - A value to check. Required.
 
 Returns a boolean.
 
@@ -30,7 +30,7 @@ Checks if a value is a function.
 
 The method takes the following arguments:
 
- * fn - `*` - A value to check. Required.
+-   fn - `*` - A value to check. Required.
 
 Returns a boolean.
 
@@ -46,7 +46,7 @@ const bar = '/bar/b/';
 const xyz = '/xyz/';
 
 const pathname = utils.pathnameBuilder(foo, bar, xyz);
-console.log(pathname) // outputs: foo/a/bar/b/xyz
+console.log(pathname); // outputs: foo/a/bar/b/xyz
 ```
 
 ### .uriBuilder(input, base, extra)
@@ -55,9 +55,9 @@ Constructs an absolute URI out of a absolute manifest URI and a relative URI.
 
 The method takes the following arguments:
 
- * input - `String` - Relative URI. Required.
- * base - `String` - Absolute manifest URI to append the input too. Required.
- * extra - `String` - Relative path to be appended at the end of the URI. Optional.
+-   input - `String` - Relative URI. Required.
+-   base - `String` - Absolute manifest URI to append the input too. Required.
+-   extra - `String` - Relative path to be appended at the end of the URI. Optional.
 
 Returns a resolved URI.
 
@@ -67,7 +67,7 @@ const manifest = 'http://foo.site.com/bar/manifest.json';
 const content = '/here/is/content.html';
 
 const url = utils.uriBuilder(content, manifest);
-console.log(url) // outputs: http://foo.site.com/bar/here/is/content.html
+console.log(url); // outputs: http://foo.site.com/bar/here/is/content.html
 ```
 
 ### .uriIsRelative(uri)
@@ -76,15 +76,15 @@ Checks if a URI is relative
 
 The method takes the following arguments:
 
- * uri - `String` - The URI to check. Required.
+-   uri - `String` - The URI to check. Required.
 
 Returns a Boolean.
 
 ```js
 const utils = require('@podium/utils');
 
-utils.uriIsRelative('http://foo.site.com/bar/');  // false
-utils.uriIsRelative('/bar/');  // true
+utils.uriIsRelative('http://foo.site.com/bar/'); // false
+utils.uriIsRelative('/bar/'); // true
 ```
 
 ### .uriRelativeToAbsolute(input, base, extra)
@@ -94,9 +94,9 @@ absolute URI out of a absolute mainfest URI.
 
 The method takes the following arguments:
 
- * input - `String` - Relative or absolute URI. Required.
- * base - `String` - Absolute manifest URI to append the possible relative input too. Required.
- * extra - `String` - Relative path to be appended at the end of the URI. Optional.
+-   input - `String` - Relative or absolute URI. Required.
+-   base - `String` - Absolute manifest URI to append the possible relative input too. Required.
+-   extra - `String` - Relative path to be appended at the end of the URI. Optional.
 
 Returns a resolved URI.
 
@@ -106,7 +106,7 @@ const manifest = 'http://foo.site.com/bar/manifest.json';
 const content = 'http://foo.site.com/here/is/content.html';
 
 const url = utils.uriRelativeToAbsolute(content, manifest);
-console.log(url) // outputs: http://foo.site.com/here/is/content.html
+console.log(url); // outputs: http://foo.site.com/here/is/content.html
 ```
 
 ### .setAtLocalsPodium(response, property, value)
@@ -119,14 +119,14 @@ existing, on the response object.
 
 The method takes the following arguments:
 
- * response - `Object` - A http response object.
- * property - `String` - Property for the value.
- * value - `String` - Value to store on the property.
+-   response - `Object` - A http response object.
+-   property - `String` - Property for the value.
+-   value - `String` - Value to store on the property.
 
 The http response object.
 
 ```js
-const obj = utils.setAtLocalsPodium({}, 'foo', 'bar')
+const obj = utils.setAtLocalsPodium({}, 'foo', 'bar');
 
 /*
 obj is now:
@@ -145,8 +145,8 @@ obj is now:
 Get the value from a property on .locals.podium on a http response object
 Ensures that .locals.podium exists on the http response object.
 
-* response - `Object` - A http response object
-* property - `String` - Property for the value
+-   response - `Object` - A http response object
+-   property - `String` - Property for the value
 
 returns The property, or `null` if it does not exist
 
@@ -155,9 +155,9 @@ returns The property, or `null` if it does not exist
 Get the value from a property on .locals.podium on a http response object
 and sets its value on another key.
 
-* response - `Object` - A http response object
-* fromProperty - `String` - Property for the existent value
-* toProperty - `String` - Property for the duplicated value
+-   response - `Object` - A http response object
+-   fromProperty - `String` - Property for the existent value
+-   toProperty - `String` - Property for the duplicated value
 
 @returns {Object} The http response object
 
@@ -167,9 +167,9 @@ Serialize a context object into a http header object.
 
 The method takes the following arguments:
 
- * headers - `Object` - A http headers object the context will be copied into.
- * context - `Object` - A contect object to copy from
- * arg - `*` - An argument value passed on to the function if a context value is a function.
+-   headers - `Object` - A http headers object the context will be copied into.
+-   context - `Object` - A contect object to copy from
+-   arg - `*` - An argument value passed on to the function if a context value is a function.
 
 A http header object.
 
@@ -195,15 +195,14 @@ headers is now:
 */
 ```
 
-
 ### .deserializeContext(headers, prefix)
 
 Deserialize a context object from a http header object
 
 The method takes the following arguments:
 
- * headers - `Object` - A http headers object the context will be extracted from.
- * prefix - `String` - The prefix used to mark what properties are context properties
+-   headers - `Object` - A http headers object the context will be extracted from.
+-   prefix - `String` - The prefix used to mark what properties are context properties
 
 A object containing context properties and values
 
