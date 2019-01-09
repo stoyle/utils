@@ -1,5 +1,7 @@
 # Podium Utils
 
+[![Build Status](https://travis-ci.org/podium-lib/utils.svg?branch=master)](https://travis-ci.org/podium-lib/utils)
+
 Misc common / generic utility methods.
 
 ## Installation
