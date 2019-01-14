@@ -1,6 +1,8 @@
 # Podium Utils
 
-[![Build Status](https://travis-ci.org/podium-lib/utils.svg?branch=master)](https://travis-ci.org/podium-lib/utils) [![Greenkeeper badge](https://badges.greenkeeper.io/podium-lib/utils.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/podium-lib/utils.svg?branch=master)](https://travis-ci.org/podium-lib/utils)
+[![Greenkeeper badge](https://badges.greenkeeper.io/podium-lib/utils.svg)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/podium-lib/utils/badge.svg)](https://snyk.io/test/github/podium-lib/utils)
 
 Misc common / generic utility methods.
 
