@@ -1,11 +1,13 @@
 {
     "name": "@podium/utils",
     "version": "2.2.0",
+    "description": "Common generic utility methods shared by @podium modules.",
     "license": "MIT",
     "keywords": [
         "micro services",
         "micro frontend",
-        "components"
+        "components",
+        "podium"
     ],
     "repository": {
         "type": "git",
