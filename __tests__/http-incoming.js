@@ -142,3 +142,17 @@ test('PodiumHttpIncoming.render() - ".view" is set - ".development" is "true" - 
     incoming.development = true;
     expect(incoming.render('foo')).toEqual('bar-foo');
 });
+
+test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".resonose"', () => {
+    const incoming = new HttpIncoming(SIMPLE_REQ, SIMPLE_RES);
+    const result = incoming.toJSON();
+    expect(result.request).toEqual(undefined);
+    expect(result.response).toEqual(undefined);
+    expect(result.url).toEqual({});
+    expect(result.params).toEqual({});
+    expect(result.context).toEqual({});
+    expect(result.development).toEqual(false);
+    expect(result.name).toEqual('');
+    expect(result.css).toEqual('');
+    expect(result.js).toEqual('');
+});
