@@ -26,7 +26,8 @@
         "lint:fix": "eslint --fix .",
         "test": "jest",
         "test:verbose": "jest --verbose",
-        "test:coverage": "jest --coverage"
+        "test:coverage": "jest --coverage",
+        "bench": "node benchmark/benchmark.js"
     },
     "jest": {
         "coveragePathIgnorePatterns": [
@@ -43,16 +44,17 @@
         "testEnvironment": "node"
     },
     "devDependencies": {
-        "eslint": "^5.6.1",
+        "eslint": "^5.15.1",
         "eslint-config-airbnb-base": "^13.1.0",
         "eslint-config-prettier": "^4.1.0",
-        "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-import": "^2.16.0",
         "eslint-plugin-prettier": "^3.0.0",
-        "jest": "^23.6.0",
-        "prettier": "^1.14.2"
+        "jest": "^24.5.0",
+        "prettier": "^1.16.4",
+        "benchmark": "^2.1.4"
     },
     "dependencies": {
-        "original-url": "^1.2.1",
-        "camelcase": "^5.0.0"
+        "camelcase": "^5.2.0",
+        "original-url": "^1.2.1"
     }
 }
