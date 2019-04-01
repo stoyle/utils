@@ -146,33 +146,19 @@ test('PodiumHttpIncoming.view - set value - should set value', () => {
     expect(incoming.view).toEqual(fn);
 });
 
-test('PodiumHttpIncoming.render() - ".view" is not set - ".development" is "false" - should return passed in value', () => {
+test('PodiumHttpIncoming.render() - ".view" is not set', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     expect(incoming.render({ body: 'foo' })).toEqual('foo');
 });
 
-test('PodiumHttpIncoming.render() - ".view" is not set - ".development" is "true" - should return passed in value', () => {
+test('PodiumHttpIncoming.render() - ".view" is set', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    incoming.development = true;
-    expect(incoming.render({ body: 'foo', podlet: true })).toEqual('foo');
-});
-
-test('PodiumHttpIncoming.render() - ".view" is set - ".development" is "false" - should return passed in value', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = value => `bar-${value}`;
+    const fn = data => `bar-${data.body}`;
     incoming.view = fn;
-    expect(incoming.render({ body: 'foo', podlet: true })).toEqual('foo');
+    expect(incoming.render({ body: 'foo' })).toEqual('bar-foo');
 });
 
-test('PodiumHttpIncoming.render() - ".view" is set - ".development" is "true" - should execute function set on view', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = ({ body }) => `bar-${body}`;
-    incoming.view = fn;
-    incoming.development = true;
-    expect(incoming.render({ body: 'foo', podlet: true })).toEqual('bar-foo');
-});
-
-test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".resonose"', () => {
+test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".response"', () => {
     const incoming = new HttpIncoming(SIMPLE_REQ, SIMPLE_RES);
     const result = incoming.toJSON();
     expect(result.request).toEqual(undefined);
