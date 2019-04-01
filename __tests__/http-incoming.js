@@ -151,11 +151,23 @@ test('PodiumHttpIncoming.render() - ".view" is not set', () => {
     expect(incoming.render({ body: 'foo' })).toEqual('foo');
 });
 
+test('PodiumHttpIncoming.render() - ".view" is not set, a string is passed to render', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(incoming.render('foo')).toEqual('foo');
+});
+
 test('PodiumHttpIncoming.render() - ".view" is set', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     const fn = data => `bar-${data.body}`;
     incoming.view = fn;
     expect(incoming.render({ body: 'foo' })).toEqual('bar-foo');
+});
+
+test('PodiumHttpIncoming.render() - ".view" is set, a data object is passed to render', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    const fn = data => `bar-${data.body}`;
+    incoming.view = fn;
+    expect(incoming.render('foo')).toEqual('bar-foo');
 });
 
 test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".response"', () => {
