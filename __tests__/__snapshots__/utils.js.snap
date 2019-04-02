@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`.template() - arguments given - should render template using values given 1`] = `
+"<!doctype html>
+<html lang=\\"en-NZ\\">
+    <head>
+        <meta charset=\\"utf-pretend-encoding\\">
+        <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+        <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=Edge\\">
+        <script src=\\"http://somejsurl.com\\" defer></script>
+        <link media=\\"all\\" rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl.com\\">
+        <title>this goes in the title tag</title>
+        this goes in the head section
+    </head>
+    <body>
+        this goes in the body section
+    </body>
+</html>"
+`;
+
+exports[`.template() - no arguments given - should render template 1`] = `
+"<!doctype html>
+<html lang=\\"en-US\\">
+    <head>
+        <meta charset=\\"utf-8\\">
+        <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+        <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=Edge\\">
+        
+        
+        <title></title>
+        
+    </head>
+    <body>
+        
+    </body>
+</html>"
+`;

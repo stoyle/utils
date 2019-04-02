@@ -595,3 +595,25 @@ test('.deserializeContext() - prefix argument with alternate value is given - sh
     const result = utils.deserializeContext(headers, 'helium');
     expect(result).toEqual({ foo: 'foo helium' });
 });
+
+/**
+ * .template()
+ */
+
+test('.template() - no arguments given - should render template', () => {
+    const result = utils.template();
+    expect(result).toMatchSnapshot();
+});
+
+test('.template() - arguments given - should render template using values given', () => {
+    const result = utils.template({
+        head: 'this goes in the head section',
+        body: 'this goes in the body section',
+        encoding: 'utf-pretend-encoding',
+        locale: 'en-NZ',
+        title: 'this goes in the title tag',
+        js: 'http://somejsurl.com',
+        css: 'http://somecssurl.com',
+    });
+    expect(result).toMatchSnapshot();
+});
