@@ -36,6 +36,7 @@ test('PodiumHttpIncoming() - no arguments given - should construct object with d
     expect(incoming.response).toEqual({});
     expect(incoming.url).toEqual({});
     expect(incoming.params).toEqual({});
+    expect(incoming.proxy).toEqual(false);
     expect(incoming.context).toEqual({});
     expect(incoming.development).toEqual(false);
     expect(incoming.name).toEqual('');
@@ -86,6 +87,26 @@ test('PodiumHttpIncoming.response - set value - should throw', () => {
     );
 });
 
+test('PodiumHttpIncoming.params - set value - should throw', () => {
+    expect.hasAssertions();
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(() => {
+        incoming.params = 'foo';
+    }).toThrowError(
+        'Cannot set read-only property.',
+    );
+});
+
+test('PodiumHttpIncoming.url - set value - should throw', () => {
+    expect.hasAssertions();
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(() => {
+        incoming.url = 'foo';
+    }).toThrowError(
+        'Cannot set read-only property.',
+    );
+});
+
 test('PodiumHttpIncoming.development - set value - should set value', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     incoming.development = true;
@@ -108,6 +129,18 @@ test('PodiumHttpIncoming.js - set value - should set value', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     incoming.js = 'a_js';
     expect(incoming.js).toEqual('a_js');
+});
+
+test('PodiumHttpIncoming.proxy - set value - should set value', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    incoming.proxy = true;
+    expect(incoming.proxy).toEqual(true);
+});
+
+test('PodiumHttpIncoming.context - set value - should set value', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    incoming.context = { foo: 'bar' };
+    expect(incoming.context).toEqual({ foo: 'bar' });
 });
 
 test('PodiumHttpIncoming.view - set value - should set value', () => {
@@ -151,6 +184,7 @@ test('PodiumHttpIncoming.toJSON() - call method - should return object without "
     expect(result.url).toEqual({});
     expect(result.params).toEqual({});
     expect(result.context).toEqual({});
+    expect(result.proxy).toEqual(false);
     expect(result.development).toEqual(false);
     expect(result.name).toEqual('');
     expect(result.css).toEqual('');
