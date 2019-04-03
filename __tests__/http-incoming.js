@@ -72,9 +72,7 @@ test('PodiumHttpIncoming.request - set value - should throw', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     expect(() => {
         incoming.request = 'foo';
-    }).toThrowError(
-        'Cannot set read-only property.',
-    );
+    }).toThrowError('Cannot set read-only property.');
 });
 
 test('PodiumHttpIncoming.response - set value - should throw', () => {
@@ -82,9 +80,7 @@ test('PodiumHttpIncoming.response - set value - should throw', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     expect(() => {
         incoming.response = 'foo';
-    }).toThrowError(
-        'Cannot set read-only property.',
-    );
+    }).toThrowError('Cannot set read-only property.');
 });
 
 test('PodiumHttpIncoming.params - set value - should throw', () => {
@@ -145,38 +141,36 @@ test('PodiumHttpIncoming.context - set value - should set value', () => {
 
 test('PodiumHttpIncoming.view - set value - should set value', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = (value) => `bar-${value}`;
+    const fn = value => `bar-${value}`;
     incoming.view = fn;
     expect(incoming.view).toEqual(fn);
 });
 
-test('PodiumHttpIncoming.render() - ".view" is not set - ".development" is "false" - should return passed in value', () => {
+test('PodiumHttpIncoming.render() - ".view" is not set', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(incoming.render({ body: 'foo' })).toEqual('foo');
+});
+
+test('PodiumHttpIncoming.render() - ".view" is not set, a string is passed to render', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     expect(incoming.render('foo')).toEqual('foo');
 });
 
-test('PodiumHttpIncoming.render() - ".view" is not set - ".development" is "true" - should return passed in value', () => {
+test('PodiumHttpIncoming.render() - ".view" is set', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    incoming.development = true;
-    expect(incoming.render('foo')).toEqual('foo');
-});
-
-test('PodiumHttpIncoming.render() - ".view" is set - ".development" is "false" - should return passed in value', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = (value) => `bar-${value}`;
+    const fn = data => `bar-${data.body}`;
     incoming.view = fn;
-    expect(incoming.render('foo')).toEqual('foo');
+    expect(incoming.render({ body: 'foo' })).toEqual('bar-foo');
 });
 
-test('PodiumHttpIncoming.render() - ".view" is set - ".development" is "true" - should execute function set on view', () => {
+test('PodiumHttpIncoming.render() - ".view" is set, a data object is passed to render', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = (value) => `bar-${value}`;
+    const fn = data => `bar-${data.body}`;
     incoming.view = fn;
-    incoming.development = true;
     expect(incoming.render('foo')).toEqual('bar-foo');
 });
 
-test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".resonose"', () => {
+test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".response"', () => {
     const incoming = new HttpIncoming(SIMPLE_REQ, SIMPLE_RES);
     const result = incoming.toJSON();
     expect(result.request).toEqual(undefined);
