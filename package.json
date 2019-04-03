@@ -44,17 +44,17 @@
         "testEnvironment": "node"
     },
     "devDependencies": {
-        "eslint": "^5.15.1",
+        "benchmark": "^2.1.4",
+        "eslint": "^5.16.0",
         "eslint-config-airbnb-base": "^13.1.0",
         "eslint-config-prettier": "^4.1.0",
         "eslint-plugin-import": "^2.16.0",
         "eslint-plugin-prettier": "^3.0.0",
-        "jest": "^24.5.0",
-        "prettier": "^1.16.4",
-        "benchmark": "^2.1.4"
+        "jest": "^24.7.0",
+        "prettier": "^1.16.4"
     },
     "dependencies": {
-        "camelcase": "^5.2.0",
+        "camelcase": "^5.3.0",
         "original-url": "^1.2.1"
     }
 }
