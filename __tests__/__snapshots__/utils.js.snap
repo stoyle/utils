@@ -7,9 +7,9 @@ exports[`.template() - arguments given - handles v4 js and css syntax 1`] = `
         <meta charset=\\"utf-8\\">
         <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=Edge\\">
-        <link media=\\"all\\" rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl1.com\\">
-        <link media=\\"all\\" rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl2.com\\">
-        <link media=\\"all\\" rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl3.com\\">
+        <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl1.com\\">
+        <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl2.com\\">
+        <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl3.com\\">
         <link rel=\\"preload\\" href=\\"http://somejsurl1.com\\" as=\\"script\\"></link>
         <link rel=\\"preload\\" href=\\"http://somejsurl2.com\\" as=\\"script\\"></link>
         <link rel=\\"preload\\" href=\\"http://somejsurl3.com\\" as=\\"script\\"></link>
@@ -33,7 +33,7 @@ exports[`.template() - arguments given - should render template using values giv
         <meta charset=\\"utf-pretend-encoding\\">
         <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=Edge\\">
-        <link media=\\"all\\" rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl.com\\">
+        <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl.com\\">
         <link rel=\\"preload\\" href=\\"http://somejsurl.com\\" as=\\"script\\"></link>
         <title>this goes in the title tag</title>
         this goes in the head section
