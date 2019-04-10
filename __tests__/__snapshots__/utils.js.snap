@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`.template() - arguments given - handles v4 js and css syntax 1`] = `
+"<!doctype html>
+<html lang=\\"en-US\\">
+    <head>
+        <meta charset=\\"utf-8\\">
+        <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+        <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=Edge\\">
+        <link media=\\"all\\" rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl1.com\\">
+        <link media=\\"all\\" rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl2.com\\">
+        <link media=\\"all\\" rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl3.com\\">
+        <link rel=\\"preload\\" href=\\"http://somejsurl1.com\\" as=\\"script\\"></link>
+        <link rel=\\"preload\\" href=\\"http://somejsurl2.com\\" as=\\"script\\"></link>
+        <link rel=\\"preload\\" href=\\"http://somejsurl3.com\\" as=\\"script\\"></link>
+        <title></title>
+        
+    </head>
+    <body>
+        
+        <script src=\\"http://somejsurl1.com\\" defer></script>
+        <script src=\\"http://somejsurl2.com\\" defer></script>
+        <script src=\\"http://somejsurl3.com\\" defer></script>
+        
+    </body>
+</html>"
+`;
+
 exports[`.template() - arguments given - should render template using values given 1`] = `
 "<!doctype html>
 <html lang=\\"en-NZ\\">
@@ -7,13 +33,15 @@ exports[`.template() - arguments given - should render template using values giv
         <meta charset=\\"utf-pretend-encoding\\">
         <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=Edge\\">
-        <script src=\\"http://somejsurl.com\\" defer></script>
         <link media=\\"all\\" rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl.com\\">
+        <link rel=\\"preload\\" href=\\"http://somejsurl.com\\" as=\\"script\\"></link>
         <title>this goes in the title tag</title>
         this goes in the head section
     </head>
     <body>
         this goes in the body section
+        <script src=\\"http://somejsurl.com\\" defer></script>
+        this goes in the footer section
     </body>
 </html>"
 `;
@@ -31,6 +59,8 @@ exports[`.template() - no arguments given - should render template 1`] = `
         
     </head>
     <body>
+        
+        
         
     </body>
 </html>"
