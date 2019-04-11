@@ -617,3 +617,19 @@ test('.template() - arguments given - should render template using values given'
     });
     expect(result).toMatchSnapshot();
 });
+
+test('.template() - arguments given - handles v4 js and css syntax', () => {
+    const result = utils.template({
+        js: [
+            { value: 'http://somejsurl1.com', type: 'default' },
+            { value: 'http://somejsurl2.com', type: 'default' },
+            { value: 'http://somejsurl3.com', type: 'default' },
+        ],
+        css: [
+            { value: 'http://somecssurl1.com', type: 'default' },
+            { value: 'http://somecssurl2.com', type: 'default' },
+            { value: 'http://somecssurl3.com', type: 'default' },
+        ],
+    });
+    expect(result).toMatchSnapshot();
+});
