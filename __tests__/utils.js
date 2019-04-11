@@ -609,7 +609,6 @@ test('.template() - arguments given - should render template using values given'
     const result = utils.template({
         head: 'this goes in the head section',
         body: 'this goes in the body section',
-        footer: 'this goes in the footer section',
         encoding: 'utf-pretend-encoding',
         locale: 'en-NZ',
         title: 'this goes in the title tag',
