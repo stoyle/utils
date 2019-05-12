@@ -40,8 +40,8 @@ test('PodiumHttpIncoming() - no arguments given - should construct object with d
     expect(incoming.context).toEqual({});
     expect(incoming.development).toEqual(false);
     expect(incoming.name).toEqual('');
-    expect(incoming.css).toEqual('');
-    expect(incoming.js).toEqual('');
+    expect(incoming.css).toEqual([]);
+    expect(incoming.js).toEqual([]);
 });
 
 test('PodiumHttpIncoming() - "request" argument given - should store request on ".request"', () => {
@@ -115,16 +115,38 @@ test('PodiumHttpIncoming.name - set value - should set value', () => {
     expect(incoming.name).toEqual('a_name');
 });
 
-test('PodiumHttpIncoming.css - set value - should set value', () => {
+test('PodiumHttpIncoming.css - set legal value - should set value', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    incoming.css = 'a_css';
-    expect(incoming.css).toEqual('a_css');
+    incoming.css = ['a_css'];
+    expect(incoming.css).toEqual(['a_css']);
 });
 
-test('PodiumHttpIncoming.js - set value - should set value', () => {
+test('PodiumHttpIncoming.css - set illegal value - should throw', () => {
+    expect.hasAssertions();
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    incoming.js = 'a_js';
-    expect(incoming.js).toEqual('a_js');
+
+    expect(() => {
+        incoming.css = 'a_css';
+    }).toThrowError(
+        'Value for property \".css\" must be an Array',
+    );
+});
+
+test('PodiumHttpIncoming.js - set legal value - should set value', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    incoming.js = ['a_js'];
+    expect(incoming.js).toEqual(['a_js']);
+});
+
+test('PodiumHttpIncoming.js - set illegal value - should throw', () => {
+    expect.hasAssertions();
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+
+    expect(() => {
+        incoming.js = 'a_js';
+    }).toThrowError(
+        'Value for property \".js\" must be an Array',
+    );
 });
 
 test('PodiumHttpIncoming.proxy - set value - should set value', () => {
@@ -181,6 +203,6 @@ test('PodiumHttpIncoming.toJSON() - call method - should return object without "
     expect(result.proxy).toEqual(false);
     expect(result.development).toEqual(false);
     expect(result.name).toEqual('');
-    expect(result.css).toEqual('');
-    expect(result.js).toEqual('');
+    expect(result.css).toEqual([]);
+    expect(result.js).toEqual([]);
 });
