@@ -596,40 +596,4 @@ test('.deserializeContext() - prefix argument with alternate value is given - sh
     expect(result).toEqual({ foo: 'foo helium' });
 });
 
-/**
- * .template()
- */
 
-test('.template() - no arguments given - should render template', () => {
-    const result = utils.template();
-    expect(result).toMatchSnapshot();
-});
-
-test('.template() - arguments given - should render template using values given', () => {
-    const result = utils.template({
-        head: 'this goes in the head section',
-        body: 'this goes in the body section',
-        encoding: 'utf-pretend-encoding',
-        locale: 'en-NZ',
-        title: 'this goes in the title tag',
-        js: 'http://somejsurl.com',
-        css: 'http://somecssurl.com',
-    });
-    expect(result).toMatchSnapshot();
-});
-
-test('.template() - arguments given - handles v4 js and css syntax', () => {
-    const result = utils.template({
-        js: [
-            { value: 'http://somejsurl1.com', type: 'default' },
-            { value: 'http://somejsurl2.com', type: 'default' },
-            { value: 'http://somejsurl3.com', type: 'default' },
-        ],
-        css: [
-            { value: 'http://somecssurl1.com', type: 'default' },
-            { value: 'http://somecssurl2.com', type: 'default' },
-            { value: 'http://somecssurl3.com', type: 'default' },
-        ],
-    });
-    expect(result).toMatchSnapshot();
-});

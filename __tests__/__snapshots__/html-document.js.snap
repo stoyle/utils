@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`.template() - arguments given - handles v4 js and css syntax 1`] = `
+exports[`.document() - arguments given - handles v4 js and css syntax 1`] = `
 "<!doctype html>
 <html lang=\\"en-US\\">
     <head>
@@ -10,9 +10,9 @@ exports[`.template() - arguments given - handles v4 js and css syntax 1`] = `
         <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl1.com\\">
         <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl2.com\\">
         <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl3.com\\">
-        <script src=\\"http://somejsurl1.com\\" defer></script>
-        <script src=\\"http://somejsurl2.com\\" defer></script>
-        <script src=\\"http://somejsurl3.com\\" defer></script>
+        <script defer src=\\"http://somejsurl1.com\\" ></script>
+        <script defer src=\\"http://somejsurl2.com\\" ></script>
+        <script defer src=\\"http://somejsurl3.com\\" ></script>
         <title></title>
         
     </head>
@@ -22,7 +22,7 @@ exports[`.template() - arguments given - handles v4 js and css syntax 1`] = `
 </html>"
 `;
 
-exports[`.template() - arguments given - should render template using values given 1`] = `
+exports[`.document() - arguments given - should render template using values given 1`] = `
 "<!doctype html>
 <html lang=\\"en-NZ\\">
     <head>
@@ -30,7 +30,7 @@ exports[`.template() - arguments given - should render template using values giv
         <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
         <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=Edge\\">
         <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl.com\\">
-        <script src=\\"http://somejsurl.com\\" defer></script>
+        <script defer src=\\"http://somejsurl.com\\" ></script>
         <title>this goes in the title tag</title>
         this goes in the head section
     </head>
@@ -40,7 +40,29 @@ exports[`.template() - arguments given - should render template using values giv
 </html>"
 `;
 
-exports[`.template() - no arguments given - should render template 1`] = `
+exports[`.document() - js "type" is "module" - should set type to module on script tags 1`] = `
+"<!doctype html>
+<html lang=\\"en-US\\">
+    <head>
+        <meta charset=\\"utf-8\\">
+        <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+        <meta http-equiv=\\"X-UA-Compatible\\" content=\\"IE=Edge\\">
+        <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl1.com\\">
+        <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl2.com\\">
+        <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl3.com\\">
+        <script type=\\"module\\" defer src=\\"http://somejsurl1.com\\"></script>
+        <script type=\\"module\\" defer src=\\"http://somejsurl2.com\\"></script>
+        <script type=\\"module\\" defer src=\\"http://somejsurl3.com\\"></script>
+        <title></title>
+        
+    </head>
+    <body>
+        
+    </body>
+</html>"
+`;
+
+exports[`.document() - no arguments given - should render template 1`] = `
 "<!doctype html>
 <html lang=\\"en-US\\">
     <head>
