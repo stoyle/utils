@@ -161,35 +161,19 @@ test('PodiumHttpIncoming.context - set value - should set value', () => {
     expect(incoming.context).toEqual({ foo: 'bar' });
 });
 
+test('PodiumHttpIncoming.view - no value - should return empty object', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(incoming.view).toEqual({});
+});
+
 test('PodiumHttpIncoming.view - set value - should set value', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = value => `bar-${value}`;
-    incoming.view = fn;
-    expect(incoming.view).toEqual(fn);
-});
-
-test('PodiumHttpIncoming.render() - ".view" is not set', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    expect(incoming.render({ body: 'foo' })).toEqual('foo');
-});
-
-test('PodiumHttpIncoming.render() - ".view" is not set, a string is passed to render', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    expect(incoming.render('foo')).toEqual('foo');
-});
-
-test('PodiumHttpIncoming.render() - ".view" is set', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = data => `bar-${data.body}`;
-    incoming.view = fn;
-    expect(incoming.render({ body: 'foo' })).toEqual('bar-foo');
-});
-
-test('PodiumHttpIncoming.render() - ".view" is set, a data object is passed to render', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = data => `bar-${data.body}`;
-    incoming.view = fn;
-    expect(incoming.render('foo')).toEqual('bar-foo');
+    incoming.view = {
+        title: 'foo'
+    };
+    expect(incoming.view).toEqual({
+        title: 'foo'
+    });
 });
 
 test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".response"', () => {
@@ -200,6 +184,7 @@ test('PodiumHttpIncoming.toJSON() - call method - should return object without "
     expect(result.url).toEqual({});
     expect(result.params).toEqual({});
     expect(result.context).toEqual({});
+    expect(result.view).toEqual({});
     expect(result.proxy).toEqual(false);
     expect(result.development).toEqual(false);
     expect(result.name).toEqual('');
