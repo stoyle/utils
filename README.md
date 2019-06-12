@@ -218,3 +218,21 @@ const headers = {
 const context = utils.deserializeContext(headers);
 // context is: { foo: 'bar podium' }
 ```
+
+### .template(data)
+
+Shared template function for use in layout and podlet
+
+This method takes a single argument:
+
+-   data - `Object` - An object with template variables as key/value pairs
+
+`data` can contain any of the following keys:
+
+-   `data.title` - document title
+-   `data.locale` - language tag/locale identifier defaults to `en-US`
+-   `data.encoding` - defaults to `utf-8`
+-   `data.head` - Any additional HTML markup that should be placed in the document `<head>`
+-   `data.js` - JavaScript URL, will be used as a `src` value in a script tag
+-   `data.css` - CSS URL, will be used as an `href` value in a link tag
+-   `data.body` - HTML body markup to be rendered

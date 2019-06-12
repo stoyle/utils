@@ -36,11 +36,12 @@ test('PodiumHttpIncoming() - no arguments given - should construct object with d
     expect(incoming.response).toEqual({});
     expect(incoming.url).toEqual({});
     expect(incoming.params).toEqual({});
+    expect(incoming.proxy).toEqual(false);
     expect(incoming.context).toEqual({});
     expect(incoming.development).toEqual(false);
     expect(incoming.name).toEqual('');
-    expect(incoming.css).toEqual('');
-    expect(incoming.js).toEqual('');
+    expect(incoming.css).toEqual([]);
+    expect(incoming.js).toEqual([]);
 });
 
 test('PodiumHttpIncoming() - "request" argument given - should store request on ".request"', () => {
@@ -71,9 +72,7 @@ test('PodiumHttpIncoming.request - set value - should throw', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     expect(() => {
         incoming.request = 'foo';
-    }).toThrowError(
-        'Cannot set read-only property.',
-    );
+    }).toThrowError('Cannot set read-only property.');
 });
 
 test('PodiumHttpIncoming.response - set value - should throw', () => {
@@ -81,6 +80,24 @@ test('PodiumHttpIncoming.response - set value - should throw', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     expect(() => {
         incoming.response = 'foo';
+    }).toThrowError('Cannot set read-only property.');
+});
+
+test('PodiumHttpIncoming.params - set value - should throw', () => {
+    expect.hasAssertions();
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(() => {
+        incoming.params = 'foo';
+    }).toThrowError(
+        'Cannot set read-only property.',
+    );
+});
+
+test('PodiumHttpIncoming.url - set value - should throw', () => {
+    expect.hasAssertions();
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(() => {
+        incoming.url = 'foo';
     }).toThrowError(
         'Cannot set read-only property.',
     );
@@ -98,52 +115,68 @@ test('PodiumHttpIncoming.name - set value - should set value', () => {
     expect(incoming.name).toEqual('a_name');
 });
 
-test('PodiumHttpIncoming.css - set value - should set value', () => {
+test('PodiumHttpIncoming.css - set legal value - should set value', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    incoming.css = 'a_css';
-    expect(incoming.css).toEqual('a_css');
+    incoming.css = ['a_css'];
+    expect(incoming.css).toEqual(['a_css']);
 });
 
-test('PodiumHttpIncoming.js - set value - should set value', () => {
+test('PodiumHttpIncoming.css - set illegal value - should throw', () => {
+    expect.hasAssertions();
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    incoming.js = 'a_js';
-    expect(incoming.js).toEqual('a_js');
+
+    expect(() => {
+        incoming.css = 'a_css';
+    }).toThrowError(
+        'Value for property \".css\" must be an Array',
+    );
+});
+
+test('PodiumHttpIncoming.js - set legal value - should set value', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    incoming.js = ['a_js'];
+    expect(incoming.js).toEqual(['a_js']);
+});
+
+test('PodiumHttpIncoming.js - set illegal value - should throw', () => {
+    expect.hasAssertions();
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+
+    expect(() => {
+        incoming.js = 'a_js';
+    }).toThrowError(
+        'Value for property \".js\" must be an Array',
+    );
+});
+
+test('PodiumHttpIncoming.proxy - set value - should set value', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    incoming.proxy = true;
+    expect(incoming.proxy).toEqual(true);
+});
+
+test('PodiumHttpIncoming.context - set value - should set value', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    incoming.context = { foo: 'bar' };
+    expect(incoming.context).toEqual({ foo: 'bar' });
+});
+
+test('PodiumHttpIncoming.view - no value - should return empty object', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(incoming.view).toEqual({});
 });
 
 test('PodiumHttpIncoming.view - set value - should set value', () => {
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = (value) => `bar-${value}`;
-    incoming.view = fn;
-    expect(incoming.view).toEqual(fn);
+    incoming.view = {
+        title: 'foo'
+    };
+    expect(incoming.view).toEqual({
+        title: 'foo'
+    });
 });
 
-test('PodiumHttpIncoming.render() - ".view" is not set - ".development" is "false" - should return passed in value', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    expect(incoming.render('foo')).toEqual('foo');
-});
-
-test('PodiumHttpIncoming.render() - ".view" is not set - ".development" is "true" - should return passed in value', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    incoming.development = true;
-    expect(incoming.render('foo')).toEqual('foo');
-});
-
-test('PodiumHttpIncoming.render() - ".view" is set - ".development" is "false" - should return passed in value', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = (value) => `bar-${value}`;
-    incoming.view = fn;
-    expect(incoming.render('foo')).toEqual('foo');
-});
-
-test('PodiumHttpIncoming.render() - ".view" is set - ".development" is "true" - should execute function set on view', () => {
-    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
-    const fn = (value) => `bar-${value}`;
-    incoming.view = fn;
-    incoming.development = true;
-    expect(incoming.render('foo')).toEqual('bar-foo');
-});
-
-test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".resonose"', () => {
+test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".response"', () => {
     const incoming = new HttpIncoming(SIMPLE_REQ, SIMPLE_RES);
     const result = incoming.toJSON();
     expect(result.request).toEqual(undefined);
@@ -151,8 +184,10 @@ test('PodiumHttpIncoming.toJSON() - call method - should return object without "
     expect(result.url).toEqual({});
     expect(result.params).toEqual({});
     expect(result.context).toEqual({});
+    expect(result.view).toEqual({});
+    expect(result.proxy).toEqual(false);
     expect(result.development).toEqual(false);
     expect(result.name).toEqual('');
-    expect(result.css).toEqual('');
-    expect(result.js).toEqual('');
+    expect(result.css).toEqual([]);
+    expect(result.js).toEqual([]);
 });
