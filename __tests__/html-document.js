@@ -57,7 +57,7 @@ test('.document() - arguments given - handles v4 js and css syntax', () => {
     expect(result).toMatchSnapshot();
 });
 
-test('.document() - js "type" is "module" - should set type to module on script tags', () => {
+test('.document() - js "type" is "esm" - should set type to module on script tags', () => {
     const incoming = new HttpIncoming(SIMPLE_REQ, SIMPLE_RES);
     incoming.css = [
         { value: 'http://somecssurl1.com', type: 'default' },
@@ -65,9 +65,9 @@ test('.document() - js "type" is "module" - should set type to module on script 
         { value: 'http://somecssurl3.com', type: 'default' },
     ];
     incoming.js = [
-        { value: 'http://somejsurl1.com', type: 'module' },
-        { value: 'http://somejsurl2.com', type: 'module' },
-        { value: 'http://somejsurl3.com', type: 'module' },
+        { value: 'http://somejsurl1.com', type: 'esm' },
+        { value: 'http://somejsurl2.com', type: 'esm' },
+        { value: 'http://somejsurl3.com', type: 'esm' },
     ];
 
     const result = document(incoming);
