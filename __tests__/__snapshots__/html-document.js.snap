@@ -40,7 +40,7 @@ exports[`.document() - arguments given - should render template using values giv
 </html>"
 `;
 
-exports[`.document() - js "type" is "module" - should set type to module on script tags 1`] = `
+exports[`.document() - js "type" is "esm" - should set type to module on script tags 1`] = `
 "<!doctype html>
 <html lang=\\"en-US\\">
     <head>
@@ -50,9 +50,9 @@ exports[`.document() - js "type" is "module" - should set type to module on scri
         <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl1.com\\">
         <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl2.com\\">
         <link rel=\\"stylesheet\\" type=\\"text/css\\" href=\\"http://somecssurl3.com\\">
-        <script type=\\"module\\" defer src=\\"http://somejsurl1.com\\"></script>
-        <script type=\\"module\\" defer src=\\"http://somejsurl2.com\\"></script>
-        <script type=\\"module\\" defer src=\\"http://somejsurl3.com\\"></script>
+        <script type=\\"module\\" defer src=\\"http://somejsurl1.com\\" ></script>
+        <script type=\\"module\\" defer src=\\"http://somejsurl2.com\\" ></script>
+        <script type=\\"module\\" defer src=\\"http://somejsurl3.com\\" ></script>
         <title></title>
         
     </head>
