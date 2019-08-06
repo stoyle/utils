@@ -128,7 +128,7 @@ test('PodiumHttpIncoming.css - set illegal value - should throw', () => {
     expect(() => {
         incoming.css = 'a_css';
     }).toThrowError(
-        'Value for property \".css\" must be an Array',
+        'Value for property ".css" must be an Array',
     );
 });
 
@@ -145,7 +145,7 @@ test('PodiumHttpIncoming.js - set illegal value - should throw', () => {
     expect(() => {
         incoming.js = 'a_js';
     }).toThrowError(
-        'Value for property \".js\" must be an Array',
+        'Value for property ".js" must be an Array',
     );
 });
 
