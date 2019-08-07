@@ -20,7 +20,7 @@
     "files": [
         "lib"
     ],
-    "main": "./lib/utils.js",
+    "main": "./lib/main.js",
     "scripts": {
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
