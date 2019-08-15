@@ -236,3 +236,45 @@ This method takes a single argument:
 -   `data.js` - JavaScript URL, will be used as a `src` value in a script tag
 -   `data.css` - CSS URL, will be used as an `href` value in a link tag
 -   `data.body` - HTML body markup to be rendered
+
+### .buildLinkElement(assetCss)
+
+Build a HTML link element out of a AssetCss object.
+
+The method takes the following arguments:
+
+-   assetCss - `Object` - A CSS Asset object
+
+```js
+const utils = require('@podium/utils');
+
+const css = new utils.AssetCss({
+    value: 'https://cdn.foo.com/style.css'
+});
+
+const element = utils.buildLinkElement(css);
+// element is: <link href="" .....
+```
+
+returns A HTML link element as a String.
+
+### .buildScriptElement(assetJs)
+
+Build a HTML script element out of a AssetJs object.
+
+The method takes the following arguments:
+
+-   assetJs - `Object` - A JS Asset object
+
+```js
+const utils = require('@podium/utils');
+
+const js = new utils.AssetJs({
+    value: 'https://cdn.foo.com/script.js'
+});
+
+const element = utils.buildLinkElement(js);
+// element is: <script src="" .....
+```
+
+returns A HTML script element as a String.

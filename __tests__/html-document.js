@@ -43,9 +43,9 @@ test('.document() - arguments given - should render template using values given'
 test('.document() - arguments given - handles v4 js and css syntax', () => {
     const incoming = new HttpIncoming(SIMPLE_REQ, SIMPLE_RES);
     incoming.css = [
-        { value: 'http://somecssurl1.com', type: 'default' },
-        { value: 'http://somecssurl2.com', type: 'default' },
-        { value: 'http://somecssurl3.com', type: 'default' },
+        { value: 'http://somecssurl1.com', type: 'text/css' },
+        { value: 'http://somecssurl2.com', type: 'text/css' },
+        { value: 'http://somecssurl3.com', type: 'text/css' },
     ];
     incoming.js = [
         { value: 'http://somejsurl1.com', type: 'default' },
@@ -60,9 +60,9 @@ test('.document() - arguments given - handles v4 js and css syntax', () => {
 test('.document() - js "type" is "esm" - should set type to module on script tags', () => {
     const incoming = new HttpIncoming(SIMPLE_REQ, SIMPLE_RES);
     incoming.css = [
-        { value: 'http://somecssurl1.com', type: 'default' },
-        { value: 'http://somecssurl2.com', type: 'default' },
-        { value: 'http://somecssurl3.com', type: 'default' },
+        { value: 'http://somecssurl1.com', type: 'text/css' },
+        { value: 'http://somecssurl2.com', type: 'text/css' },
+        { value: 'http://somecssurl3.com', type: 'text/css' },
     ];
     incoming.js = [
         { value: 'http://somejsurl1.com', type: 'esm' },
