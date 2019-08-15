@@ -246,7 +246,7 @@ The method takes the following arguments:
 -   assetCss - `Object` - A CSS Asset object
 
 ```js
-const utils = require(@podium/utils);
+const utils = require('@podium/utils');
 
 const css = new utils.AssetCss({
     value: 'https://cdn.foo.com/style.css'
@@ -267,7 +267,7 @@ The method takes the following arguments:
 -   assetJs - `Object` - A JS Asset object
 
 ```js
-const utils = require(@podium/utils);
+const utils = require('@podium/utils');
 
 const js = new utils.AssetJs({
     value: 'https://cdn.foo.com/script.js'
