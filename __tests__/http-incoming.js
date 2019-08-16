@@ -176,6 +176,43 @@ test('PodiumHttpIncoming.view - set value - should set value', () => {
     });
 });
 
+test('PodiumHttpIncoming.podlets - set legal value - should append values to .css and .js', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    incoming.podlets = [
+        { css: [ { value: 'foo.css' } ], js: [ { value: 'foo.js' } ] },
+        { css: [ { value: 'bar.css' } ], js: [ { value: 'bar.js' } ] },
+    ];
+    expect(incoming.css).toEqual([{ value: 'foo.css' }, { value: 'bar.css' }]);
+    expect(incoming.js).toEqual([{ value: 'foo.js' }, { value: 'bar.js' }]);
+});
+
+test('PodiumHttpIncoming.podlets - set legal value - should append those values with .css and .js to .css and .js', () => {
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    incoming.podlets = [
+        { css: [ { value: 'foo.css' } ], js: [ { value: 'foo.js' } ] },
+        { css: [ { value: 'bar.css' } ], js: [ { value: 'bar.js' } ] },
+        { ssc: [ { value: 'xyz.css' } ], sj: [ { value: 'xyz.js' } ] },
+    ];
+    expect(incoming.css).toEqual([{ value: 'foo.css' }, { value: 'bar.css' }]);
+    expect(incoming.js).toEqual([{ value: 'foo.js' }, { value: 'bar.js' }]);
+});
+
+test('PodiumHttpIncoming.podlets - get illegal value - should throw', () => {
+    expect.hasAssertions();
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(() => {
+        incoming.podlets = './foo.js';
+    }).toThrowError('Value for property ".podlets" must be an Array');
+});
+
+test('PodiumHttpIncoming.podlets - get value - should throw', () => {
+    expect.hasAssertions();
+    const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
+    expect(() => {
+        incoming.podlets;
+    }).toThrowError('The getter for .podlets is reserved for later implementation');
+});
+
 test('PodiumHttpIncoming.toJSON() - call method - should return object without ".request" and ".response"', () => {
     const incoming = new HttpIncoming(SIMPLE_REQ, SIMPLE_RES);
     const result = incoming.toJSON();
