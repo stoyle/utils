@@ -165,7 +165,29 @@ test('.buildLinkElement() - properties are empty string - should NOT appended at
         as: '',
     });
     const result = utils.buildLinkElement(obj);
-    expect(result).toEqual('<link href="/foo">');
+    expect(result).toEqual('<link href="/foo" crossorigin="">');
+});
+
+test('.buildLinkElement() - crossorigin boolean true', () => {
+    const obj = new AssetCss({
+        crossorigin: true,
+        value: '/bar',
+    });
+    const result = utils.buildLinkElement(obj);
+    expect(result).toEqual(
+        `<link href="/bar" crossorigin type="text/css" rel="stylesheet">`,
+    );
+});
+
+test('.buildLinkElement() - crossorigin boolean false', () => {
+    const obj = new AssetCss({
+        crossorigin: false,
+        value: '/bar',
+    });
+    const result = utils.buildLinkElement(obj);
+    expect(result).toEqual(
+        `<link href="/bar" type="text/css" rel="stylesheet">`,
+    );
 });
 
 /**

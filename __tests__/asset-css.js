@@ -20,7 +20,7 @@ test('Css() - no value given to "value" argument - should throw', () => {
 
 test('Css() - no arguments given - should construct object with default values', () => {
     const obj = new Css({ value: '/foo' });
-    expect(obj.crossorigin).toEqual('');
+    expect(obj.crossorigin).toEqual(undefined);
     expect(obj.disabled).toEqual(false);
     expect(obj.hreflang).toEqual('');
     expect(obj.value).toEqual('/foo');
@@ -38,7 +38,7 @@ test('Css() - no arguments given - should construct JSON with default values', (
     expect(json).toEqual({
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 });
 
@@ -66,7 +66,7 @@ test('Css() - pathname is given - prefix is unset - should NOT append pathname t
     expect(json).toEqual({
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 });
 
@@ -76,7 +76,7 @@ test('Css() - pathname is given - prefix is false - should NOT append pathname t
     expect(json).toEqual({
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 });
 
@@ -86,28 +86,38 @@ test('Css() - pathname is given - prefix is true - should NOT append pathname to
     expect(json).toEqual({
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 });
 
 test('Css() - pathname is given - prefix is unset - should NOT append pathname to "href" for toHTML()', () => {
     const obj = new Css({ value: '/foo', pathname: '/bar' });
-    expect(obj.toHTML()).toEqual('<link href="/foo" type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('Css() - pathname is given - prefix is false - should NOT append pathname to "href" for toHTML()', () => {
     const obj = new Css({ value: '/foo', pathname: '/bar', prefix: false });
     expect(obj.value).toEqual('/foo');
-    expect(obj.toHTML()).toEqual('<link href="/foo" type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('Css() - pathname is given - prefix is true - should append pathname to "href" for toHTML()', () => {
     const obj = new Css({ value: '/foo', pathname: '/bar', prefix: true });
-    expect(obj.toHTML()).toEqual('<link href="/bar/foo" type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/bar/foo" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('Css() - value if absoulte - pathname is given - prefix is true - should NOT append pathname to "value"', () => {
-    const obj = new Css({ value: 'http://somewhere.else.com/foo', pathname: '/bar', prefix: true });
+    const obj = new Css({
+        value: 'http://somewhere.else.com/foo',
+        pathname: '/bar',
+        prefix: true,
+    });
     expect(obj.value).toEqual('http://somewhere.else.com/foo');
     expect(obj.href).toEqual('http://somewhere.else.com/foo');
 
@@ -115,28 +125,32 @@ test('Css() - value if absoulte - pathname is given - prefix is true - should NO
     expect(json).toEqual({
         value: 'http://somewhere.else.com/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 
-    expect(obj.toHTML()).toEqual('<link href="http://somewhere.else.com/foo" type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="http://somewhere.else.com/foo" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('Css() - set "crossorigin" - should construct object as expected', () => {
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.crossorigin = 'bar';
 
     expect(obj.crossorigin).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<link href="/foo" crossorigin="bar" type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" crossorigin="bar" type="text/css" rel="stylesheet">',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         crossorigin: 'bar',
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 
     const repl = new Css(json);
@@ -145,20 +159,22 @@ test('Css() - set "crossorigin" - should construct object as expected', () => {
 
 test('Css() - set "disabled" - should construct object as expected', () => {
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.disabled = true;
 
     expect(obj.disabled).toEqual(true);
-    expect(obj.toHTML()).toEqual('<link href="/foo" disabled type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" disabled type="text/css" rel="stylesheet">',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         disabled: true,
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 
     const repl = new Css(json);
@@ -167,20 +183,22 @@ test('Css() - set "disabled" - should construct object as expected', () => {
 
 test('Css() - set "hreflang" - should construct object as expected', () => {
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.hreflang = 'bar';
 
     expect(obj.hreflang).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<link href="/foo" hreflang="bar" type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" hreflang="bar" type="text/css" rel="stylesheet">',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         hreflang: 'bar',
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 
     const repl = new Css(json);
@@ -189,20 +207,22 @@ test('Css() - set "hreflang" - should construct object as expected', () => {
 
 test('Css() - set "title" - should construct object as expected', () => {
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.title = 'bar';
 
     expect(obj.title).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<link href="/foo" title="bar" type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" title="bar" type="text/css" rel="stylesheet">',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         title: 'bar',
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 
     const repl = new Css(json);
@@ -211,20 +231,22 @@ test('Css() - set "title" - should construct object as expected', () => {
 
 test('Css() - set "media" - should construct object as expected', () => {
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.media = 'bar';
 
     expect(obj.media).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<link href="/foo" media="bar" type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" media="bar" type="text/css" rel="stylesheet">',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         media: 'bar',
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 
     const repl = new Css(json);
@@ -233,19 +255,21 @@ test('Css() - set "media" - should construct object as expected', () => {
 
 test('Css() - set "type" - should construct object as expected', () => {
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.type = 'bar';
 
     expect(obj.type).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<link href="/foo" type="bar" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" type="bar" rel="stylesheet">',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         value: '/foo',
         type: 'bar',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 
     const repl = new Css(json);
@@ -254,19 +278,21 @@ test('Css() - set "type" - should construct object as expected', () => {
 
 test('Css() - set "rel" - should construct object as expected', () => {
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.rel = 'bar';
 
     expect(obj.rel).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<link href="/foo" type="text/css" rel="bar">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" type="text/css" rel="bar">',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         value: '/foo',
         type: 'text/css',
-        rel: 'bar'
+        rel: 'bar',
     });
 
     const repl = new Css(json);
@@ -275,20 +301,22 @@ test('Css() - set "rel" - should construct object as expected', () => {
 
 test('Css() - set "as" - should construct object as expected', () => {
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.as = 'bar';
 
     expect(obj.as).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<link href="/foo" as="bar" type="text/css" rel="stylesheet">');
+    expect(obj.toHTML()).toEqual(
+        '<link href="/foo" as="bar" type="text/css" rel="stylesheet">',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         as: 'bar',
         value: '/foo',
         type: 'text/css',
-        rel: 'stylesheet'
+        rel: 'stylesheet',
     });
 
     const repl = new Css(json);
@@ -298,7 +326,7 @@ test('Css() - set "as" - should construct object as expected', () => {
 test('Css() - set "value" - should throw', () => {
     expect.hasAssertions();
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
     expect(() => {
         obj.value = '/bar';
@@ -308,7 +336,7 @@ test('Css() - set "value" - should throw', () => {
 test('Css() - set "href" - should throw', () => {
     expect.hasAssertions();
     const obj = new Css({
-        value: '/foo'
+        value: '/foo',
     });
     expect(() => {
         obj.href = '/bar';
