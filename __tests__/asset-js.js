@@ -21,7 +21,7 @@ test('Js() - no value given to "value" argument - should throw', () => {
 test('Js() - no arguments given - should construct object with default values', () => {
     const obj = new Js({ value: '/foo' });
     expect(obj.referrerpolicy).toEqual('');
-    expect(obj.crossorigin).toEqual('');
+    expect(obj.crossorigin).toEqual(undefined);
     expect(obj.integrity).toEqual('');
     expect(obj.nomodule).toEqual(false);
     expect(obj.async).toEqual(false);
@@ -36,7 +36,7 @@ test('Js() - no arguments given - should construct JSON with default values', ()
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 });
 
@@ -63,7 +63,7 @@ test('Js() - pathname is given - prefix is unset - should NOT append pathname to
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 });
 
@@ -72,7 +72,7 @@ test('Js() - pathname is given - prefix is false - should NOT append pathname to
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 });
 
@@ -81,7 +81,7 @@ test('Js() - pathname is given - prefix is true - should NOT append pathname to 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 });
 
@@ -102,40 +102,42 @@ test('Js() - pathname is given - prefix is true - should append pathname to "src
 });
 
 test('Js() - value if absoulte - pathname is given - prefix is true - should NOT append pathname to "value"', () => {
-    const obj = new Js({ value: 'http://somewhere.else.com/foo', pathname: '/bar', prefix: true });
+    const obj = new Js({
+        value: 'http://somewhere.else.com/foo',
+        pathname: '/bar',
+        prefix: true,
+    });
     expect(obj.value).toEqual('http://somewhere.else.com/foo');
     expect(obj.src).toEqual('http://somewhere.else.com/foo');
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         value: 'http://somewhere.else.com/foo',
-        type: 'default'
+        type: 'default',
     });
 
-    expect(obj.toHTML()).toEqual('<script src="http://somewhere.else.com/foo"></script>');
+    expect(obj.toHTML()).toEqual(
+        '<script src="http://somewhere.else.com/foo"></script>',
+    );
 });
-
-
-
-
-
-
 
 test('Js() - set "referrerpolicy" - should construct object as expected', () => {
     const obj = new Js({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.referrerpolicy = 'bar';
 
     expect(obj.referrerpolicy).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<script src="/foo" referrerpolicy="bar"></script>');
+    expect(obj.toHTML()).toEqual(
+        '<script src="/foo" referrerpolicy="bar"></script>',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         referrerpolicy: 'bar',
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 
     const repl = new Js(json);
@@ -144,19 +146,21 @@ test('Js() - set "referrerpolicy" - should construct object as expected', () => 
 
 test('Js() - set "crossorigin" - should construct object as expected', () => {
     const obj = new Js({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.crossorigin = 'bar';
 
     expect(obj.crossorigin).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<script src="/foo" crossorigin="bar"></script>');
+    expect(obj.toHTML()).toEqual(
+        '<script src="/foo" crossorigin="bar"></script>',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         crossorigin: 'bar',
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 
     const repl = new Js(json);
@@ -165,19 +169,21 @@ test('Js() - set "crossorigin" - should construct object as expected', () => {
 
 test('Js() - set "integrity" - should construct object as expected', () => {
     const obj = new Js({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.integrity = 'bar';
 
     expect(obj.integrity).toEqual('bar');
-    expect(obj.toHTML()).toEqual('<script src="/foo" integrity="bar"></script>');
+    expect(obj.toHTML()).toEqual(
+        '<script src="/foo" integrity="bar"></script>',
+    );
 
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         integrity: 'bar',
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 
     const repl = new Js(json);
@@ -186,7 +192,7 @@ test('Js() - set "integrity" - should construct object as expected', () => {
 
 test('Js() - set "nomodule" - should construct object as expected', () => {
     const obj = new Js({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.nomodule = true;
@@ -198,7 +204,7 @@ test('Js() - set "nomodule" - should construct object as expected', () => {
     expect(json).toEqual({
         nomodule: true,
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 
     const repl = new Js(json);
@@ -207,7 +213,7 @@ test('Js() - set "nomodule" - should construct object as expected', () => {
 
 test('Js() - set "async" - should construct object as expected', () => {
     const obj = new Js({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.async = true;
@@ -219,7 +225,7 @@ test('Js() - set "async" - should construct object as expected', () => {
     expect(json).toEqual({
         async: true,
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 
     const repl = new Js(json);
@@ -228,7 +234,7 @@ test('Js() - set "async" - should construct object as expected', () => {
 
 test('Js() - set "defer" - should construct object as expected', () => {
     const obj = new Js({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.defer = true;
@@ -240,7 +246,7 @@ test('Js() - set "defer" - should construct object as expected', () => {
     expect(json).toEqual({
         defer: true,
         value: '/foo',
-        type: 'default'
+        type: 'default',
     });
 
     const repl = new Js(json);
@@ -249,7 +255,7 @@ test('Js() - set "defer" - should construct object as expected', () => {
 
 test('Js() - set "type" - should construct object as expected', () => {
     const obj = new Js({
-        value: '/foo'
+        value: '/foo',
     });
 
     obj.type = 'esm';
@@ -260,7 +266,7 @@ test('Js() - set "type" - should construct object as expected', () => {
     const json = JSON.parse(JSON.stringify(obj));
     expect(json).toEqual({
         value: '/foo',
-        type: 'esm'
+        type: 'esm',
     });
 
     const repl = new Js(json);
@@ -270,7 +276,7 @@ test('Js() - set "type" - should construct object as expected', () => {
 test('Js() - set "value" - should throw', () => {
     expect.hasAssertions();
     const obj = new Js({
-        value: '/foo'
+        value: '/foo',
     });
     expect(() => {
         obj.value = '/bar';
@@ -280,7 +286,7 @@ test('Js() - set "value" - should throw', () => {
 test('Js() - set "src" - should throw', () => {
     expect.hasAssertions();
     const obj = new Js({
-        value: '/foo'
+        value: '/foo',
     });
     expect(() => {
         obj.src = '/bar';
