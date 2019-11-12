@@ -10,70 +10,84 @@ const utils = require('../lib/html-utils');
 
 test('.buildLinkElement() - "value" property has a value - should appended "href" attribute to element', () => {
     const obj = new AssetCss({
-        value: '/foo'
+        value: '/foo',
     });
     const result = utils.buildLinkElement(obj);
-    expect(result).toEqual('<link href="/foo" type="text/css" rel="stylesheet">');
+    expect(result).toEqual(
+        '<link href="/foo" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('.buildLinkElement() - "crossorigin" property has a value - should appended "crossorigin" attribute to element', () => {
     const obj = new AssetCss({
         value: '/foo',
-        crossorigin: 'bar'
+        crossorigin: 'bar',
     });
     const result = utils.buildLinkElement(obj);
-    expect(result).toEqual('<link href="/foo" crossorigin="bar" type="text/css" rel="stylesheet">');
+    expect(result).toEqual(
+        '<link href="/foo" crossorigin="bar" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('.buildLinkElement() - "disabled" property is "true" - should appended "disabled" attribute to element', () => {
     const obj = new AssetCss({
         value: '/foo',
-        disabled: true
+        disabled: true,
     });
     const result = utils.buildLinkElement(obj);
-    expect(result).toEqual('<link href="/foo" disabled type="text/css" rel="stylesheet">');
+    expect(result).toEqual(
+        '<link href="/foo" disabled type="text/css" rel="stylesheet">',
+    );
 });
 
 test('.buildLinkElement() - "hreflang" property has a value - should appended "hreflang" attribute to element', () => {
     const obj = new AssetCss({
         value: '/foo',
-        hreflang: 'bar'
+        hreflang: 'bar',
     });
     const result = utils.buildLinkElement(obj);
-    expect(result).toEqual('<link href="/foo" hreflang="bar" type="text/css" rel="stylesheet">');
+    expect(result).toEqual(
+        '<link href="/foo" hreflang="bar" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('.buildLinkElement() - "title" property has a value - should appended "title" attribute to element', () => {
     const obj = new AssetCss({
         value: '/foo',
-        title: 'bar'
+        title: 'bar',
     });
     const result = utils.buildLinkElement(obj);
-    expect(result).toEqual('<link href="/foo" title="bar" type="text/css" rel="stylesheet">');
+    expect(result).toEqual(
+        '<link href="/foo" title="bar" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('.buildLinkElement() - "media" property has a value - should appended "media" attribute to element', () => {
     const obj = new AssetCss({
         value: '/foo',
-        media: 'bar'
+        media: 'bar',
     });
     const result = utils.buildLinkElement(obj);
-    expect(result).toEqual('<link href="/foo" media="bar" type="text/css" rel="stylesheet">');
+    expect(result).toEqual(
+        '<link href="/foo" media="bar" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('.buildLinkElement() - "as" property has a value - should appended "as" attribute to element', () => {
     const obj = new AssetCss({
         value: '/foo',
-        as: 'bar'
+        as: 'bar',
     });
     const result = utils.buildLinkElement(obj);
-    expect(result).toEqual('<link href="/foo" as="bar" type="text/css" rel="stylesheet">');
+    expect(result).toEqual(
+        '<link href="/foo" as="bar" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('.buildLinkElement() - "type" property has a value - should appended "type" attribute to element', () => {
     const obj = new AssetCss({
         value: '/foo',
-        type: 'bar'
+        type: 'bar',
     });
     const result = utils.buildLinkElement(obj);
     expect(result).toEqual('<link href="/foo" type="bar" rel="stylesheet">');
@@ -82,7 +96,7 @@ test('.buildLinkElement() - "type" property has a value - should appended "type"
 test('.buildLinkElement() - "rel" property has a value - should appended "rel" attribute to element', () => {
     const obj = new AssetCss({
         value: '/foo',
-        rel: 'bar'
+        rel: 'bar',
     });
     const result = utils.buildLinkElement(obj);
     expect(result).toEqual('<link href="/foo" type="text/css" rel="bar">');
@@ -101,7 +115,9 @@ test('.buildLinkElement() - properties are "undefined" - should NOT appended att
         as: undefined,
     });
     const result = utils.buildLinkElement(obj);
-    expect(result).toEqual('<link href="/foo" type="text/css" rel="stylesheet">');
+    expect(result).toEqual(
+        '<link href="/foo" type="text/css" rel="stylesheet">',
+    );
 });
 
 test('.buildLinkElement() - properties are "null" - should NOT appended attributes to element', () => {
@@ -158,7 +174,7 @@ test('.buildLinkElement() - properties are empty string - should NOT appended at
 
 test('.buildScriptElement() - "value" property has a value - should appended "src" attribute to element', () => {
     const obj = new AssetJs({
-        value: '/foo'
+        value: '/foo',
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo"></script>');
@@ -167,7 +183,7 @@ test('.buildScriptElement() - "value" property has a value - should appended "sr
 test('.buildScriptElement() - "type" property has "module" as value - should appended "type" attribute with "module" as value to element', () => {
     const obj = new AssetJs({
         value: '/foo',
-        type: 'module'
+        type: 'module',
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo" type="module"></script>');
@@ -176,7 +192,7 @@ test('.buildScriptElement() - "type" property has "module" as value - should app
 test('.buildScriptElement() - "type" property has "esm" as value - should appended "type" attribute with "module" as value to element', () => {
     const obj = new AssetJs({
         value: '/foo',
-        type: 'esm'
+        type: 'esm',
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo" type="module"></script>');
@@ -185,7 +201,7 @@ test('.buildScriptElement() - "type" property has "esm" as value - should append
 test('.buildScriptElement() - "type" property has "cjs" as value - should NOT appended a attribute to element', () => {
     const obj = new AssetJs({
         value: '/foo',
-        type: 'cjs'
+        type: 'cjs',
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo"></script>');
@@ -194,7 +210,7 @@ test('.buildScriptElement() - "type" property has "cjs" as value - should NOT ap
 test('.buildScriptElement() - "referrerpolicy" property has a value - should appended "referrerpolicy" attribute to element', () => {
     const obj = new AssetJs({
         value: '/foo',
-        referrerpolicy: 'bar'
+        referrerpolicy: 'bar',
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo" referrerpolicy="bar"></script>');
@@ -203,7 +219,7 @@ test('.buildScriptElement() - "referrerpolicy" property has a value - should app
 test('.buildScriptElement() - "crossorigin" property has a value - should appended "crossorigin" attribute to element', () => {
     const obj = new AssetJs({
         value: '/foo',
-        crossorigin: 'bar'
+        crossorigin: 'bar',
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo" crossorigin="bar"></script>');
@@ -212,7 +228,7 @@ test('.buildScriptElement() - "crossorigin" property has a value - should append
 test('.buildScriptElement() - "integrity" property has a value - should appended "integrity" attribute to element', () => {
     const obj = new AssetJs({
         value: '/foo',
-        integrity: 'bar'
+        integrity: 'bar',
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo" integrity="bar"></script>');
@@ -221,7 +237,7 @@ test('.buildScriptElement() - "integrity" property has a value - should appended
 test('.buildScriptElement() - "nomodule" property is "true" - should appended "nomodule" attribute to element', () => {
     const obj = new AssetJs({
         value: '/foo',
-        nomodule: true
+        nomodule: true,
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo" nomodule></script>');
@@ -230,7 +246,7 @@ test('.buildScriptElement() - "nomodule" property is "true" - should appended "n
 test('.buildScriptElement() - "async" property is "true" - should appended "async" attribute to element', () => {
     const obj = new AssetJs({
         value: '/foo',
-        async: true
+        async: true,
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo" async></script>');
@@ -239,7 +255,7 @@ test('.buildScriptElement() - "async" property is "true" - should appended "asyn
 test('.buildScriptElement() - "defer" property is "true" - should appended "defer" attribute to element', () => {
     const obj = new AssetJs({
         value: '/foo',
-        defer: true
+        defer: true,
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo" defer></script>');
@@ -293,7 +309,6 @@ test('.buildScriptElement() - properties are "false" - should NOT appended attri
 test('.buildScriptElement() - properties are empty string - should NOT appended attributes to element', () => {
     const obj = new AssetJs({
         referrerpolicy: '',
-        crossorigin: '',
         integrity: '',
         nomodule: '',
         async: '',
@@ -303,4 +318,31 @@ test('.buildScriptElement() - properties are empty string - should NOT appended 
     });
     const result = utils.buildScriptElement(obj);
     expect(result).toEqual('<script src="/foo"></script>');
+});
+
+test('.buildScriptElement() - crossorigin empty string', () => {
+    const obj = new AssetJs({
+        crossorigin: '',
+        value: '/foo',
+    });
+    const result = utils.buildScriptElement(obj);
+    expect(result).toEqual(`<script src="/foo" crossorigin=""></script>`);
+});
+
+test('.buildScriptElement() - crossorigin boolean true', () => {
+    const obj = new AssetJs({
+        crossorigin: true,
+        value: '/bar',
+    });
+    const result = utils.buildScriptElement(obj);
+    expect(result).toEqual(`<script src="/bar" crossorigin></script>`);
+});
+
+test('.buildScriptElement() - crossorigin boolean false', () => {
+    const obj = new AssetJs({
+        crossorigin: false,
+        value: '/bar',
+    });
+    const result = utils.buildScriptElement(obj);
+    expect(result).toEqual(`<script src="/bar"></script>`);
 });
