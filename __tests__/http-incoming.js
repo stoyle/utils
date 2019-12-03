@@ -209,7 +209,7 @@ test('PodiumHttpIncoming.podlets - get value - should throw', () => {
     expect.hasAssertions();
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     expect(() => {
-        incoming.podlets;
+        const foo = incoming.podlets; // eslint-disable-line no-unused-vars
     }).toThrowError('The getter for .podlets is reserved for later implementation');
 });
 
