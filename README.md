@@ -2,9 +2,8 @@
 
 Common generic utility methods shared by @podium modules.
 
-[![Dependencies](https://img.shields.io/david/podium-lib/utils.svg?style=flat-square)](https://david-dm.org/podium-lib/utils)
-[![Build Status](http://img.shields.io/travis/podium-lib/utils/master.svg?style=flat-square)](https://travis-ci.org/podium-lib/utils)
-[![Greenkeeper badge](https://badges.greenkeeper.io/podium-lib/utils.svg?style=flat-square)](https://greenkeeper.io/)
+[![Dependencies](https://img.shields.io/david/podium-lib/utils.svg)](https://david-dm.org/podium-lib/utils)
+![GitHub Actions status](https://github.com/podium-lib/utils/workflows/Run%20Lint%20and%20Tests/badge.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/podium-lib/utils/badge.svg?targetFile=package.json&style=flat-square)](https://snyk.io/test/github/podium-lib/utils?targetFile=package.json)
 
 ## Installation
