@@ -52,6 +52,54 @@ test('PodiumHttpIncoming() - "request" argument given - should set parsed URL on
     expect(incoming.url.host).toEqual('localhost:3030');
     expect(incoming.url.port).toEqual('3030');
     expect(incoming.url.protocol).toEqual('http:');
+    expect(incoming.url.pathname).toEqual('/some/path');
+});
+
+test('PodiumHttpIncoming() - has forwarded - should set ignore hostname and use host', () => {
+    const incoming = new HttpIncoming({
+        headers: {
+            host: 'localhost:3030',
+            'forwarded': 'host=example.com; proto=https'
+        },
+        hostname: 'localhost',
+        url: '/some/path',
+    });
+    expect(incoming.url.hostname).toEqual('localhost');
+    expect(incoming.url.host).toEqual('localhost:3030');
+    expect(incoming.url.port).toEqual('3030');
+    expect(incoming.url.protocol).toEqual('https:');
+    expect(incoming.url.pathname).toEqual('/some/path');
+});
+
+test('PodiumHttpIncoming() - forwarded https request - should set ".url.protocol" to https', () => {
+    const incoming = new HttpIncoming({
+        headers: {
+            host: 'localhost:3030',
+            'x-forwarded-proto': 'https',
+        },
+        hostname: 'localhost',
+        url: '/some/path',
+    });
+    expect(incoming.url.hostname).toEqual('localhost');
+    expect(incoming.url.host).toEqual('localhost:3030');
+    expect(incoming.url.port).toEqual('3030');
+    expect(incoming.url.protocol).toEqual('https:');
+    expect(incoming.url.pathname).toEqual('/some/path');
+});
+
+test('PodiumHttpIncoming() - request has ".originalUrl" instead of ".url" - should set value of ".originalUrl" as ".url.pathname"', () => {
+    const incoming = new HttpIncoming({
+        headers: {
+            host: 'localhost:3030',
+        },
+        hostname: 'localhost',
+        originalUrl: '/some/path',
+    });
+    expect(incoming.url.hostname).toEqual('localhost');
+    expect(incoming.url.host).toEqual('localhost:3030');
+    expect(incoming.url.port).toEqual('3030');
+    expect(incoming.url.protocol).toEqual('http:');
+    expect(incoming.url.pathname).toEqual('/some/path');
 });
 
 test('PodiumHttpIncoming() - "response" argument given - should store request on ".response"', () => {
@@ -89,7 +137,6 @@ test('PodiumHttpIncoming.params - set value - should throw', () => {
 });
 
 test('PodiumHttpIncoming.url - set value - should set value', () => {
-    expect.hasAssertions();
     const incoming = new HttpIncoming(ADVANCED_REQ, SIMPLE_RES);
     incoming.url = 'foo';
     expect(incoming.url).toEqual('foo');
