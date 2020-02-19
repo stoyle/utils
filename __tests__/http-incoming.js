@@ -9,7 +9,7 @@ const ADVANCED_REQ = {
         host: 'localhost:3030',
     },
     hostname: 'localhost',
-    url: '/some/path',
+    url: '/some/path?foo=bar',
 };
 
 const SIMPLE_RES = {
@@ -53,6 +53,7 @@ test('PodiumHttpIncoming() - "request" argument given - should set parsed URL on
     expect(incoming.url.port).toEqual('3030');
     expect(incoming.url.protocol).toEqual('http:');
     expect(incoming.url.pathname).toEqual('/some/path');
+    expect(incoming.url.search).toEqual('?foo=bar');
 });
 
 test('PodiumHttpIncoming() - has forwarded - should set ignore hostname and use host', () => {
