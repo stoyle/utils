@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/podium-lib/utils/compare/v4.2.5...v4.3.0) (2020-06-26)
+
+
+### Features
+
+* support data attributes on javascript assets ([#61](https://github.com/podium-lib/utils/issues/61)) ([9f418b2](https://github.com/podium-lib/utils/commit/9f418b2d04ce7bb04fcfe6e1e1c9cf7de6d50107))
+
 # Changelog
 
 Notable changes to this project.
