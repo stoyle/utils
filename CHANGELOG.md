@@ -1,3 +1,10 @@
+# [5.0.0-next.2](https://github.com/podium-lib/utils/compare/v5.0.0-next.1...v5.0.0-next.2) (2020-07-15)
+
+
+### Bug Fixes
+
+* Simplify js and css value validation ([#70](https://github.com/podium-lib/utils/issues/70)) ([05a1ffc](https://github.com/podium-lib/utils/commit/05a1ffc17bce3249b349b218a9b5ea8585db5df8))
+
 # [5.0.0-next.1](https://github.com/podium-lib/utils/compare/v4.3.0...v5.0.0-next.1) (2020-07-12)
 
 
