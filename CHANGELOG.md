@@ -1,3 +1,57 @@
+# [5.0.0-next.3](https://github.com/podium-lib/utils/compare/v5.0.0-next.2...v5.0.0-next.3) (2020-07-27)
+
+
+### Features
+
+* Use ES private properties instead of Symbols for privacy ([#72](https://github.com/podium-lib/utils/issues/72)) ([4083fa1](https://github.com/podium-lib/utils/commit/4083fa17301630d3669f8c819978fa2a99e5274d))
+
+
+### BREAKING CHANGES
+
+* Due to dropping node 10.x support we use ES private properties instead of Symbols.
+
+We've been using Symbols to define private properties in classes up until now. This has the downside that they are not true private and in later versions of node.js one would see these Symbols when inspecting an object. What we want is proper private properties.
+
+This PR does also add a pretty printer which outputs an object literal or the object so when debugging one can see the getters and setters of the object.
+
+Example: printing a object with `console.log()` would previously print the following:
+
+```sh
+PodiumHttpIncoming {
+  [Symbol(podium:httpincoming:development)]: false,
+  [Symbol(podium:httpincoming:response)]: {},
+  [Symbol(podium:httpincoming:request)]: {},
+  [Symbol(podium:httpincoming:context)]: {},
+  [Symbol(podium:httpincoming:params)]: {},
+  [Symbol(podium:httpincoming:proxy)]: false,
+  [Symbol(podium:httpincoming:name)]: '',
+  [Symbol(podium:httpincoming:view)]: {},
+  [Symbol(podium:httpincoming:url)]: {},
+  [Symbol(podium:httpincoming:css)]: [],
+  [Symbol(podium:httpincoming:js)]: []
+}
+```
+
+Now the following will be printed:
+
+```sh
+{
+  development: false,
+  response: {},
+  request: {},
+  context: {},
+  params: {},
+  proxy: false,
+  name: '',
+  view: {},
+  url: {},
+  css: [],
+  js: []
+}
+```
+
+Co-authored-by: Trygve Lie <trygve.lie@finn.no>
+
 # [5.0.0-next.2](https://github.com/podium-lib/utils/compare/v5.0.0-next.1...v5.0.0-next.2) (2020-07-15)
 
 
