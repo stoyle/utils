@@ -1,3 +1,11 @@
+# [4.4.0](https://github.com/podium-lib/utils/compare/v4.3.3...v4.4.0) (2020-10-12)
+
+
+### Features
+
+* add .buildReactLinkAttributes and .buildReactScriptAttributes methods ([ffb0bff](https://github.com/podium-lib/utils/commit/ffb0bff96a998694cb7102e0f9dc14c943914f7a))
+* add .toReactAttrs() method to AssetJs and AssetCss classes and integration tests ([7ab097f](https://github.com/podium-lib/utils/commit/7ab097f51d48001c884eb734eb823b0516e2eb24))
+
 ## [4.3.3](https://github.com/podium-lib/utils/compare/v4.3.2...v4.3.3) (2020-10-10)
 
 
