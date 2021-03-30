@@ -1,3 +1,10 @@
+## [4.4.12](https://github.com/podium-lib/utils/compare/v4.4.11...v4.4.12) (2021-03-30)
+
+
+### Bug Fixes
+
+* Update @podium/schema to version 4.1.9 to fix ajv error ([#110](https://github.com/podium-lib/utils/issues/110)) ([08ee7df](https://github.com/podium-lib/utils/commit/08ee7dfa6bc8b413bb8ee12dd778606f0c6c04e4))
+
 ## [4.4.11](https://github.com/podium-lib/utils/compare/v4.4.10...v4.4.11) (2021-03-27)
 
 
