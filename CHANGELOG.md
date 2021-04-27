@@ -1,3 +1,10 @@
+# [5.0.0-next.5](https://github.com/podium-lib/utils/compare/v5.0.0-next.4...v5.0.0-next.5) (2021-04-27)
+
+
+### Bug Fixes
+
+* Point require export to main.js ([#122](https://github.com/podium-lib/utils/issues/122)) ([1438ee6](https://github.com/podium-lib/utils/commit/1438ee66eb04bdc289b8b8ba2a3f20b2f6311ea1))
+
 # [5.0.0-next.4](https://github.com/podium-lib/utils/compare/v5.0.0-next.3...v5.0.0-next.4) (2021-04-27)
 
 
