@@ -1,3 +1,10 @@
+# [5.0.0-next.6](https://github.com/podium-lib/utils/compare/v5.0.0-next.5...v5.0.0-next.6) (2021-04-30)
+
+
+### Bug Fixes
+
+* Improve ESM exports to account for dual module exports ([#123](https://github.com/podium-lib/utils/issues/123)) ([42ebb4f](https://github.com/podium-lib/utils/commit/42ebb4f3b560bd41fb15019654e60520cbb973a6))
+
 # [5.0.0-next.5](https://github.com/podium-lib/utils/compare/v5.0.0-next.4...v5.0.0-next.5) (2021-04-27)
 
 
