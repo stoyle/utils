@@ -1,3 +1,10 @@
+## [4.4.27](https://github.com/podium-lib/utils/compare/v4.4.26...v4.4.27) (2021-10-26)
+
+
+### Bug Fixes
+
+* Do not allow origin as a pathname value ([#143](https://github.com/podium-lib/utils/issues/143)) ([ff9785d](https://github.com/podium-lib/utils/commit/ff9785d3e7c4fdfcf9b535a24b59141aed9d55b5))
+
 ## [4.4.26](https://github.com/podium-lib/utils/compare/v4.4.25...v4.4.26) (2021-09-13)
 
 
