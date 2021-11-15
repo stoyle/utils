@@ -1,3 +1,10 @@
+## [4.4.30](https://github.com/podium-lib/utils/compare/v4.4.29...v4.4.30) (2021-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency camelcase to v6.2.1 ([2f9a3e3](https://github.com/podium-lib/utils/commit/2f9a3e3460c1f6a2aa57b6535e93039133c0822e))
+
 ## [4.4.29](https://github.com/podium-lib/utils/compare/v4.4.28...v4.4.29) (2021-11-14)
 
 
