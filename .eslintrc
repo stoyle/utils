@@ -7,6 +7,7 @@
         "sourceType": "module"
     },
   "rules": {
+    "default-param-last": [0],
     "import/prefer-default-export": "off",
     "class-methods-use-this": [0],
     "lines-between-class-members": [0],

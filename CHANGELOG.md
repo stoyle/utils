@@ -1,4 +1,5 @@
 # [5.0.0-next.6](https://github.com/podium-lib/utils/compare/v5.0.0-next.5...v5.0.0-next.6) (2021-04-30)
+## [4.4.36](https://github.com/podium-lib/utils/compare/v4.4.35...v4.4.36) (2022-03-23)
 
 
 ### Bug Fixes
@@ -6,6 +7,9 @@
 * Improve ESM exports to account for dual module exports ([#123](https://github.com/podium-lib/utils/issues/123)) ([42ebb4f](https://github.com/podium-lib/utils/commit/42ebb4f3b560bd41fb15019654e60520cbb973a6))
 
 # [5.0.0-next.5](https://github.com/podium-lib/utils/compare/v5.0.0-next.4...v5.0.0-next.5) (2021-04-27)
+* **deps:** update dependency @podium/schemas to v4.1.32 ([0322287](https://github.com/podium-lib/utils/commit/03222876be6996552dd86d1f190dac20e51bccd2))
+
+## [4.4.35](https://github.com/podium-lib/utils/compare/v4.4.34...v4.4.35) (2022-02-05)
 
 
 ### Bug Fixes
@@ -13,6 +17,9 @@
 * Point require export to main.js ([#122](https://github.com/podium-lib/utils/issues/122)) ([1438ee6](https://github.com/podium-lib/utils/commit/1438ee66eb04bdc289b8b8ba2a3f20b2f6311ea1))
 
 # [5.0.0-next.4](https://github.com/podium-lib/utils/compare/v5.0.0-next.3...v5.0.0-next.4) (2021-04-27)
+* **deps:** update dependency @podium/schemas to v4.1.31 ([2f67490](https://github.com/podium-lib/utils/commit/2f6749053d4502ddb1c17283f96eb17085627d2d))
+
+## [4.4.34](https://github.com/podium-lib/utils/compare/v4.4.33...v4.4.34) (2022-01-15)
 
 
 ### Bug Fixes
@@ -115,6 +122,127 @@ Now the following will be printed:
 Co-authored-by: Trygve Lie <trygve.lie@finn.no>
 
 # [5.0.0-next.2](https://github.com/podium-lib/utils/compare/v5.0.0-next.1...v5.0.0-next.2) (2020-07-15)
+* **deps:** update dependency @podium/schemas to v4.1.30 ([3a390ce](https://github.com/podium-lib/utils/commit/3a390cefe5fa96a75d694c62b2c24ef369a4d9bb))
+
+## [4.4.33](https://github.com/podium-lib/utils/compare/v4.4.32...v4.4.33) (2022-01-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency camelcase to v6.3.0 ([fee3e49](https://github.com/podium-lib/utils/commit/fee3e492813aa464ba7e3cd7d0a4a8359a108c17))
+
+## [4.4.32](https://github.com/podium-lib/utils/compare/v4.4.31...v4.4.32) (2021-11-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.29 ([cc43020](https://github.com/podium-lib/utils/commit/cc43020c5ef039612671fdc559181b981dbdb313))
+
+## [4.4.31](https://github.com/podium-lib/utils/compare/v4.4.30...v4.4.31) (2021-11-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.28 ([b3d9275](https://github.com/podium-lib/utils/commit/b3d92754653ccb19d6e8cd2b539c2b9675ce11c8))
+
+## [4.4.30](https://github.com/podium-lib/utils/compare/v4.4.29...v4.4.30) (2021-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency camelcase to v6.2.1 ([2f9a3e3](https://github.com/podium-lib/utils/commit/2f9a3e3460c1f6a2aa57b6535e93039133c0822e))
+
+## [4.4.29](https://github.com/podium-lib/utils/compare/v4.4.28...v4.4.29) (2021-11-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.27 ([72d4596](https://github.com/podium-lib/utils/commit/72d4596342a45c334ed5f85c27b773595067e959))
+
+## [4.4.28](https://github.com/podium-lib/utils/compare/v4.4.27...v4.4.28) (2021-11-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.26 ([961e0e0](https://github.com/podium-lib/utils/commit/961e0e074b62d7c933041538c42a31e58d297447))
+
+## [4.4.27](https://github.com/podium-lib/utils/compare/v4.4.26...v4.4.27) (2021-10-26)
+
+
+### Bug Fixes
+
+* Do not allow origin as a pathname value ([#143](https://github.com/podium-lib/utils/issues/143)) ([ff9785d](https://github.com/podium-lib/utils/commit/ff9785d3e7c4fdfcf9b535a24b59141aed9d55b5))
+
+## [4.4.26](https://github.com/podium-lib/utils/compare/v4.4.25...v4.4.26) (2021-09-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.25 ([27b8507](https://github.com/podium-lib/utils/commit/27b8507b83f33d83de5cf196df1f4bae92edff20))
+
+## [4.4.25](https://github.com/podium-lib/utils/compare/v4.4.24...v4.4.25) (2021-08-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.24 ([35c41c7](https://github.com/podium-lib/utils/commit/35c41c75b91dd64b4857c9604f005b013e1203d7))
+
+## [4.4.24](https://github.com/podium-lib/utils/compare/v4.4.23...v4.4.24) (2021-07-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.23 ([c18698a](https://github.com/podium-lib/utils/commit/c18698ae56056a0a51e5789de496cc46869099a8))
+
+## [4.4.23](https://github.com/podium-lib/utils/compare/v4.4.22...v4.4.23) (2021-07-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.22 ([15d8ea9](https://github.com/podium-lib/utils/commit/15d8ea95e7254bbe4a38061a64bd5b919d777137))
+
+## [4.4.22](https://github.com/podium-lib/utils/compare/v4.4.21...v4.4.22) (2021-06-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.21 ([cebdc13](https://github.com/podium-lib/utils/commit/cebdc13250d1a01b1642cc7ab4e5b2d16467620d))
+
+## [4.4.21](https://github.com/podium-lib/utils/compare/v4.4.20...v4.4.21) (2021-05-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.20 ([7d9955b](https://github.com/podium-lib/utils/commit/7d9955b07c64696a0c90ac0053243b6a871e0b29))
+
+## [4.4.20](https://github.com/podium-lib/utils/compare/v4.4.19...v4.4.20) (2021-05-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.19 ([3a4f6a8](https://github.com/podium-lib/utils/commit/3a4f6a8c7e463b1cabe75b4a21c51184387df34f))
+
+## [4.4.19](https://github.com/podium-lib/utils/compare/v4.4.18...v4.4.19) (2021-05-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.18 ([21ef50a](https://github.com/podium-lib/utils/commit/21ef50a5544162b5d43d718ddc56ac1169fa58d7))
+
+## [4.4.18](https://github.com/podium-lib/utils/compare/v4.4.17...v4.4.18) (2021-05-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.17 ([b45e56d](https://github.com/podium-lib/utils/commit/b45e56d2811e0d46ac4280770988603c3bc9e3ff))
+
+## [4.4.17](https://github.com/podium-lib/utils/compare/v4.4.16...v4.4.17) (2021-04-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/schemas to v4.1.16 ([c47f0bf](https://github.com/podium-lib/utils/commit/c47f0bf348d75f46af1f8dc8445bcd57ac84f586))
+
 ## [4.4.16](https://github.com/podium-lib/utils/compare/v4.4.15...v4.4.16) (2021-04-11)
 
 
