@@ -1,3 +1,10 @@
+# [5.0.0-next.8](https://github.com/podium-lib/utils/compare/v5.0.0-next.7...v5.0.0-next.8) (2022-05-04)
+
+
+### Features
+
+* Remove CJS build step ([#170](https://github.com/podium-lib/utils/issues/170)) ([15390ed](https://github.com/podium-lib/utils/commit/15390ed2185fe0e8bc28217a5fff4eb228694c7c))
+
 # [5.0.0-next.7](https://github.com/podium-lib/utils/compare/v5.0.0-next.6...v5.0.0-next.7) (2022-05-03)
 
 
