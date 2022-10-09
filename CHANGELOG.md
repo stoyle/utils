@@ -1,3 +1,10 @@
+# [5.0.0-next.9](https://github.com/podium-lib/utils/compare/v5.0.0-next.8...v5.0.0-next.9) (2022-10-09)
+
+
+### Bug Fixes
+
+* Remove original url module ([#185](https://github.com/podium-lib/utils/issues/185)) ([6c01c0f](https://github.com/podium-lib/utils/commit/6c01c0f44e3b24c7f481a2504003903529e8f80e))
+
 # [5.0.0-next.8](https://github.com/podium-lib/utils/compare/v5.0.0-next.7...v5.0.0-next.8) (2022-05-04)
 
 
