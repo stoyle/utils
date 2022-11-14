@@ -68,7 +68,7 @@
     },
     "dependencies": {
         "@podium/schemas": "4.1.33",
-        "camelcase": "6.3.0",
+        "camelcase": "7.0.0",
         "original-url": "1.2.3"
     }
 }
